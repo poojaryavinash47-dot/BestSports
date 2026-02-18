@@ -18,7 +18,8 @@ import {
   Clock, 
   Trophy,
   ChevronRight,
-  ExternalLink
+  ExternalLink,
+  Zap
 } from "lucide-react";
 
 export default function DashboardPage() {
