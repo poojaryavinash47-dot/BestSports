@@ -11,7 +11,6 @@ import {
   ShieldCheck, 
   Zap, 
   ArrowRight,
-  CheckCircle2,
   Trophy
 } from "lucide-react";
 import { PlaceHolderImages } from "@/lib/placeholder-images";
@@ -25,33 +24,31 @@ export default function Home() {
       <Navbar />
       
       {/* Hero Section */}
-      <section className="relative py-24 md:py-32 flex items-center justify-center overflow-hidden bg-white">
+      <section className="relative py-24 md:py-40 flex items-center justify-center overflow-hidden">
         <div className="absolute inset-0 z-0">
-          <div className="absolute -top-24 -left-24 w-96 h-96 bg-secondary/5 rounded-full blur-[120px]"></div>
-          <div className="absolute top-1/2 -right-24 w-80 h-80 bg-primary/5 rounded-full blur-[100px]"></div>
-          
           <Image 
             src={cricketHero?.imageUrl || "https://picsum.photos/seed/stadium/1200/600"} 
-            alt="Stadium Background" 
+            alt="Cricket Ground" 
             fill 
-            className="object-cover opacity-[0.03] grayscale pointer-events-none"
+            className="object-cover"
             priority
           />
+          <div className="absolute inset-0 bg-gradient-to-b from-secondary/90 via-secondary/70 to-background"></div>
         </div>
 
-        <div className="container mx-auto px-4 z-10">
+        <div className="container mx-auto px-4 z-10 text-white">
           <div className="flex flex-col items-center text-center max-w-4xl mx-auto">
-            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-secondary/10 border border-secondary/20 text-secondary text-xs font-black uppercase tracking-widest mb-8">
-              <Trophy className="h-4 w-4" /> 
+            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/10 border border-white/20 text-white text-xs font-black uppercase tracking-widest mb-8 backdrop-blur-sm">
+              <Trophy className="h-4 w-4 text-primary" /> 
               <span>Bangalore's Premier Sports Network</span>
             </div>
             
-            <h1 className="font-headline text-5xl md:text-7xl font-black tracking-tighter text-secondary uppercase italic leading-tight">
+            <h1 className="font-headline text-5xl md:text-7xl font-black tracking-tighter uppercase italic leading-tight">
               BOOK YOUR COURT <br />
               <span className="text-primary not-italic">PLAY LIKE A PRO.</span>
             </h1>
             
-            <p className="max-w-xl mx-auto text-muted-foreground text-lg md:text-xl font-medium mt-6 mb-10">
+            <p className="max-w-xl mx-auto text-blue-50 text-lg md:text-xl font-medium mt-6 mb-10">
               Experience world-class sports infrastructure with instant booking, professional maintenance, and elite club perks.
             </p>
             
@@ -62,7 +59,7 @@ export default function Home() {
                 </Button>
               </Link>
               <Link href="/badminton" className="w-full sm:w-auto">
-                <Button size="lg" variant="outline" className="h-14 px-8 font-black text-lg rounded-xl border-2 border-secondary text-secondary hover:bg-secondary hover:text-white w-full sm:min-w-[220px]">
+                <Button size="lg" variant="outline" className="h-14 px-8 font-black text-lg rounded-xl border-2 border-white text-white hover:bg-white hover:text-secondary w-full sm:min-w-[220px]">
                   BADMINTON
                 </Button>
               </Link>
