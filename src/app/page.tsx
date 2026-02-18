@@ -78,7 +78,7 @@ export default function Home() {
             <Link href="/cricket">
               <Card className="group relative overflow-hidden border-none aspect-[16/9] cursor-pointer">
                 <Image 
-                  src={cricketHero?.imageUrl || ""} 
+                  src={cricketHero?.imageUrl || "https://picsum.photos/seed/cricket/600/400"} 
                   alt="Cricket" 
                   fill 
                   className="object-cover transition-transform duration-700 group-hover:scale-110"
@@ -100,7 +100,7 @@ export default function Home() {
             <Link href="/badminton">
               <Card className="group relative overflow-hidden border-none aspect-[16/9] cursor-pointer">
                 <Image 
-                  src={badmintonHero?.imageUrl || ""} 
+                  src={badmintonHero?.imageUrl || "https://picsum.photos/seed/badminton/600/400"} 
                   alt="Badminton" 
                   fill 
                   className="object-cover transition-transform duration-700 group-hover:scale-110"

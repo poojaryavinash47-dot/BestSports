@@ -187,7 +187,7 @@ export default function BookingPage({ params }: { params: Promise<{ type: string
                   </div>
 
                   <div className="p-3 rounded-lg bg-muted text-[10px] flex gap-2 text-muted-foreground">
-                    <info className="h-4 w-4 shrink-0" />
+                    <Info className="h-4 w-4 shrink-0" />
                     <p>Cancellation policy: Get 100% refund if cancelled 12 hours before slot time. No refund within 12 hours.</p>
                   </div>
                 </CardContent>

@@ -1,3 +1,28 @@
 {
-  "placeholderImages": []
+  "placeholderImages": [
+    {
+      "id": "cricket-hero",
+      "description": "Professional cricket stadium under lights",
+      "imageUrl": "https://images.unsplash.com/photo-1675693303492-9a5bc898bf94?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwzfHxjcmlja2V0JTIwc3RhZGl1bXxlbnwwfHx8fDE3NzEzMzk5NDh8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "cricket stadium"
+    },
+    {
+      "id": "badminton-hero",
+      "description": "Indoor badminton court with blue floor",
+      "imageUrl": "https://images.unsplash.com/photo-1557561371-160934834af4?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw3fHxiYWRtaW50b24lMjBjb3VydHxlbnwwfHx8fDE3NzEzOTU3Mjh8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "badminton court"
+    },
+    {
+      "id": "cricket-ground-1",
+      "description": "Green cricket field",
+      "imageUrl": "https://images.unsplash.com/photo-1663832952954-170d73947ba7?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwzfHxjcmlja2V0JTIwZ3JvdW5kfGVufDB8fHx8MTc3MTI5NTgxOHww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "cricket ground"
+    },
+    {
+      "id": "badminton-court-1",
+      "description": "Modern badminton court",
+      "imageUrl": "https://images.unsplash.com/photo-1515017804404-92b19fdfe6ac?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxMHx8YmFkbWludG9uJTIwY291cnR8ZW58MHx8fHwxNzcxMzk1NzI4fDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "badminton court"
+    }
+  ]
 }
