@@ -6,7 +6,7 @@ import Image from "next/image";
 import { Navbar } from "@/components/navbar";
 import { Footer } from "@/components/footer";
 import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import { Label } from "@/components/ui/label";
 import { Calendar as CalendarIcon, Clock, Info, ShieldCheck, CreditCard, ChevronRight } from "lucide-react";
 import { Calendar } from "@/components/ui/calendar";
@@ -187,7 +187,7 @@ export default function BookingPage({ params }: { params: Promise<{ type: string
                   </div>
 
                   <div className="p-3 rounded-lg bg-muted text-[10px] flex gap-2 text-muted-foreground">
-                    <Info className="h-4 w-4 shrink-0" />
+                    <info className="h-4 w-4 shrink-0" />
                     <p>Cancellation policy: Get 100% refund if cancelled 12 hours before slot time. No refund within 12 hours.</p>
                   </div>
                 </CardContent>
