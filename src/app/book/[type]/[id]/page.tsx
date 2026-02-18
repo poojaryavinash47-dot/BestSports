@@ -7,6 +7,7 @@ import { Navbar } from "@/components/navbar";
 import { Footer } from "@/components/footer";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Label } from "@/components/ui/label";
 import { Calendar as CalendarIcon, Clock, Info, ShieldCheck, CreditCard, ChevronRight } from "lucide-react";
 import { Calendar } from "@/components/ui/calendar";
 import { 
