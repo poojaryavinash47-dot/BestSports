@@ -1,0 +1,29 @@
+
+{
+  "placeholderImages": [
+    {
+      "id": "cricket-hero",
+      "description": "Professional cricket stadium under lights",
+      "imageUrl": "https://picsum.photos/seed/sports1/1200/600",
+      "imageHint": "cricket stadium"
+    },
+    {
+      "id": "badminton-hero",
+      "description": "Indoor badminton court with blue floor",
+      "imageUrl": "https://picsum.photos/seed/sports2/1200/600",
+      "imageHint": "badminton court"
+    },
+    {
+      "id": "cricket-ground-1",
+      "description": "Green cricket field",
+      "imageUrl": "https://picsum.photos/seed/ground1/600/400",
+      "imageHint": "cricket ground"
+    },
+    {
+      "id": "badminton-court-1",
+      "description": "Modern badminton court",
+      "imageUrl": "https://picsum.photos/seed/court1/600/400",
+      "imageHint": "badminton court"
+    }
+  ]
+}
