@@ -1,3 +1,4 @@
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -12,7 +13,7 @@
     --popover-foreground: 222.2 84% 4.9%;
     --primary: 24 100% 50%; /* Vibrant Orange for Buttons */
     --primary-foreground: 0 0% 100%;
-    --secondary: 221.2 83.2% 53.3%; /* Professional Blue */
+    --secondary: 221.2 83.2% 53.3%; /* Professional Sports Blue */
     --secondary-foreground: 210 40% 98%;
     --muted: 210 40% 96.1%;
     --muted-foreground: 215.4 16.3% 46.9%;
@@ -23,7 +24,7 @@
     --border: 214.3 31.8% 91.4%;
     --input: 214.3 31.8% 91.4%;
     --ring: 24 100% 50%;
-    --radius: 1rem;
+    --radius: 1.5rem;
   }
 }
 
@@ -42,22 +43,26 @@
 }
 
 .neon-glow-orange {
-  box-shadow: 0 0 15px rgba(255, 102, 0, 0.4);
+  box-shadow: 0 20px 40px -15px rgba(255, 102, 0, 0.4);
 }
 
 .neon-glow-blue {
-  box-shadow: 0 0 15px rgba(59, 130, 246, 0.3);
-}
-
-.nav-item-active {
-  @apply text-secondary relative;
-}
-
-.nav-item-active::after {
-  content: '';
-  @apply absolute -bottom-1 left-0 w-full h-0.5 bg-secondary rounded-full;
+  box-shadow: 0 20px 40px -15px rgba(59, 130, 246, 0.3);
 }
 
 .btn-orange {
   @apply bg-primary text-primary-foreground hover:bg-primary/90 neon-glow-orange;
+}
+
+/* Custom scrollbar for a pro feel */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  @apply bg-slate-50;
+}
+
+::-webkit-scrollbar-thumb {
+  @apply bg-secondary/20 rounded-full hover:bg-secondary/40 transition-colors;
 }
