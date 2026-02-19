@@ -59,8 +59,8 @@ export default function Home() {
                 </Button>
               </Link>
               <Link href="/badminton" className="w-full sm:w-auto">
-                <Button size="lg" variant="outline" className="h-14 px-8 font-black text-lg rounded-xl border-2 border-white text-white hover:bg-white hover:text-secondary w-full sm:min-w-[220px]">
-                  BADMINTON
+                <Button size="lg" className="h-14 px-8 font-black text-lg rounded-xl btn-orange w-full sm:min-w-[220px]">
+                  BOOK BADMINTON
                 </Button>
               </Link>
             </div>
