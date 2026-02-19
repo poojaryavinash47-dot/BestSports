@@ -1,4 +1,3 @@
-
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -11,13 +10,13 @@
     --card-foreground: 222.2 84% 4.9%;
     --popover: 0 0% 100%;
     --popover-foreground: 222.2 84% 4.9%;
-    --primary: 24 100% 50%; /* Vibrant Orange for Buttons */
+    --primary: 24 100% 50%; /* Vibrant Orange for Action Buttons */
     --primary-foreground: 0 0% 100%;
-    --secondary: 221.2 83.2% 53.3%; /* Professional Sports Blue */
+    --secondary: 212 100% 14%; /* Deep Navy Blue matching the logo shield */
     --secondary-foreground: 210 40% 98%;
     --muted: 210 40% 96.1%;
     --muted-foreground: 215.4 16.3% 46.9%;
-    --accent: 221.2 83.2% 53.3%;
+    --accent: 212 100% 14%;
     --accent-foreground: 0 0% 100%;
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 210 40% 98%;
@@ -43,18 +42,18 @@
 }
 
 .neon-glow-orange {
-  box-shadow: 0 20px 40px -15px rgba(255, 102, 0, 0.4);
+  box-shadow: 0 15px 35px -10px rgba(255, 102, 0, 0.5);
 }
 
 .neon-glow-blue {
-  box-shadow: 0 20px 40px -15px rgba(59, 130, 246, 0.3);
+  box-shadow: 0 15px 35px -10px rgba(0, 31, 71, 0.4);
 }
 
 .btn-orange {
-  @apply bg-primary text-primary-foreground hover:bg-primary/90 neon-glow-orange;
+  @apply bg-primary text-white hover:bg-primary/90 neon-glow-orange transition-all duration-300;
 }
 
-/* Custom scrollbar for a pro feel */
+/* Custom scrollbar */
 ::-webkit-scrollbar {
   width: 8px;
 }
