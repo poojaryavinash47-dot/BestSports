@@ -135,12 +135,18 @@ export default function Home() {
     },
   ];
 
+  const packagePreviews = [
+    { id: 'p1', brand: 'BestSports', title: 'Starter Cricket Plan', subtitle: 'Mon–Fri coaching · 1 hour session · Batch timings included', titleColor: 'text-slate-200' },
+    { id: 'p2', brand: 'BestSports', title: 'Advanced Training Plan', subtitle: '2 hour sessions · Skill development focus', titleColor: 'text-slate-200' },
+    { id: 'p3', brand: 'BestSports', title: 'ELITE', subtitle: 'Unlimited access to group classes, all centers and at-home workouts', titleColor: 'text-amber-300' },
+  ];
+
   return (
     <div className="flex flex-col min-h-screen bg-background">
       <Navbar />
       
       {/* Hero Section */}
-      <section className="relative py-24 md:py-40 flex items-center justify-center overflow-hidden">
+      <section className="relative py-8 md:py-14 flex items-center justify-center overflow-hidden min-h-[220px]">
         <div className="absolute inset-0 z-0">
           <Image 
             src={cricketHero?.imageUrl || "https://picsum.photos/seed/stadium/1200/600"} 
@@ -159,12 +165,12 @@ export default function Home() {
               <span>Bangalore's Premier Sports Network</span>
             </div>
             
-            <h1 className="font-headline text-5xl md:text-7xl font-black tracking-tighter uppercase italic leading-tight">
+            <h1 className="font-headline text-3xl md:text-5xl font-black tracking-tighter uppercase italic leading-tight">
               BOOK YOUR COURT <br />
               <span className="text-primary not-italic">PLAY LIKE A PRO.</span>
             </h1>
             
-            <p className="max-w-xl mx-auto text-blue-50 text-lg md:text-xl font-medium mt-6 mb-10">
+            <p className="max-w-xl mx-auto text-blue-50 text-sm md:text-base font-medium mt-3 mb-6">
               Experience world-class sports infrastructure with instant booking, professional maintenance, and elite club perks.
             </p>
             
@@ -180,6 +186,81 @@ export default function Home() {
                 </Button>
               </Link>
             </div>
+
+            {/* Small package previews inside hero */}
+            <div className="mt-20 md:mt-24 w-full relative z-20">
+              <div className="container mx-auto px-4 pr-24 md:pr-36">
+                <div className="relative">
+                  {/* centered cards */}
+                  <div className="flex items-center justify-center">
+                    <div className="flex gap-6">
+                      {packagePreviews.map((p, i) => (
+                        <div
+                          key={p.id}
+                          className={`flex flex-col items-center justify-center text-center rounded-xl p-6 shadow-md border border-white/5 bg-slate-900 text-white min-w-[260px] md:min-w-[300px] ${i === 2 ? 'ml-3 md:ml-6' : ''}`}
+                        >
+                          <div className="text-xs tracking-widest uppercase opacity-70 mb-3">{p.brand}</div>
+                          <div className={`text-3xl md:text-4xl font-black tracking-tight mb-3 ${p.titleColor || ''}`}>{p.title}</div>
+                          <div className="text-sm text-muted-foreground max-w-xs">{p.subtitle}</div>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+
+                <div className="mt-6 text-center">
+                  <Link href="/membership">
+                    <Button className="bg-gradient-to-r from-yellow-400 to-orange-500 text-white shadow-lg px-6 py-2">Explore more packages</Button>
+                  </Link>
+                </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      
+
+      {/* Cricket Courts (moved up) */}
+      <section className="py-24 bg-white">
+        <div className="container mx-auto px-4">
+          <div className="flex flex-col md:flex-row items-end justify-between gap-4 mb-10">
+            <div className="space-y-2">
+              <h2 className="font-headline text-3xl md:text-4xl font-black tracking-tight text-secondary uppercase italic">
+                Cricket Courts
+              </h2>
+              <p className="text-muted-foreground text-sm md:text-base font-medium">
+                Turf and matting wickets maintained weekly for serious cricket.
+              </p>
+            </div>
+          </div>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
+            {cricketCourts.map((court) => (
+              <CourtCard key={court.id} court={court} />
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Badminton Courts (moved up) */}
+      <section className="py-24 bg-slate-50">
+        <div className="container mx-auto px-4">
+          <div className="flex flex-col md:flex-row items-end justify-between gap-4 mb-10">
+            <div className="space-y-2">
+              <h2 className="font-headline text-3xl md:text-4xl font-black tracking-tight text-secondary uppercase italic">
+                Badminton Courts
+              </h2>
+              <p className="text-muted-foreground text-sm md:text-base font-medium">
+                High-grip indoor courts with pro-grade lighting and perfect bounce.
+              </p>
+            </div>
+          </div>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
+            {badmintonCourts.map((court) => (
+              <CourtCard key={court.id} court={court} />
+            ))}
           </div>
         </div>
       </section>
@@ -231,75 +312,6 @@ export default function Home() {
                 </div>
               </Card>
             </Link>
-          </div>
-        </div>
-      </section>
-
-      {/* Advantage Grid */}
-      <section className="py-24 bg-white">
-        <div className="container mx-auto px-4">
-          <div className="text-center mb-16">
-            <h2 className="font-headline text-4xl font-black text-secondary uppercase italic">The Advantage</h2>
-            <p className="text-muted-foreground mt-2">Why athletes choose PlayArena.</p>
-          </div>
-
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
-            {[
-              { icon: <Clock className="h-8 w-8 text-primary" />, title: "Live Booking", desc: "Real-time slot tracking and instant confirmation." },
-              { icon: <ShieldCheck className="h-8 w-8 text-primary" />, title: "Elite Maintenance", desc: "Weekly professional turf grading and court cleaning." },
-              { icon: <Zap className="h-8 w-8 text-primary" />, title: "Club House", desc: "Premium showers, secure lockers, and pro lounges." },
-              { icon: <Calendar className="h-8 w-8 text-primary" />, title: "Leagues", desc: "Tools for organizing group play & tournaments." }
-            ].map((item, idx) => (
-              <div key={idx} className="bg-slate-50 p-8 rounded-3xl border border-transparent hover:border-secondary/10 transition-all group">
-                <div className="mb-6">{item.icon}</div>
-                <h3 className="font-headline text-xl font-bold mb-2 text-secondary uppercase">{item.title}</h3>
-                <p className="text-sm text-muted-foreground leading-relaxed">{item.desc}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Badminton Courts */}
-      <section className="py-24 bg-slate-50">
-        <div className="container mx-auto px-4">
-          <div className="flex flex-col md:flex-row items-end justify-between gap-4 mb-10">
-            <div className="space-y-2">
-              <h2 className="font-headline text-3xl md:text-4xl font-black tracking-tight text-secondary uppercase italic">
-                Badminton Courts
-              </h2>
-              <p className="text-muted-foreground text-sm md:text-base font-medium">
-                High-grip indoor courts with pro-grade lighting and perfect bounce.
-              </p>
-            </div>
-          </div>
-
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
-            {badmintonCourts.map((court) => (
-              <CourtCard key={court.id} court={court} />
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Cricket Courts */}
-      <section className="py-24 bg-white">
-        <div className="container mx-auto px-4">
-          <div className="flex flex-col md:flex-row items-end justify-between gap-4 mb-10">
-            <div className="space-y-2">
-              <h2 className="font-headline text-3xl md:text-4xl font-black tracking-tight text-secondary uppercase italic">
-                Cricket Courts
-              </h2>
-              <p className="text-muted-foreground text-sm md:text-base font-medium">
-                Turf and matting wickets maintained weekly for serious cricket.
-              </p>
-            </div>
-          </div>
-
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
-            {cricketCourts.map((court) => (
-              <CourtCard key={court.id} court={court} />
-            ))}
           </div>
         </div>
       </section>

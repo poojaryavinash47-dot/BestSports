@@ -286,8 +286,6 @@ export default function SubscriptionPlans() {
   return (
     <section className="min-h-screen py-12 px-4 bg-gradient-to-br from-white via-blue-100 to-blue-900 font-sans">
       <div className="max-w-4xl mx-auto text-center mb-10">
-        <h2 className="text-3xl md:text-4xl font-bold mb-2 text-blue-900">Coaching Packages</h2>
-        <p className="text-base text-blue-800/80 mb-2">Choose the perfect plan for your sports journey</p>
         <div className="flex justify-center items-center gap-4 mt-6">
           <button
             className={`px-5 py-2 rounded-full font-semibold transition-colors duration-200 border-2 ${tab === 'cricket' ? 'bg-blue-600 text-white border-blue-700 shadow' : 'bg-white text-blue-700 border-blue-200'}`}
