@@ -76,12 +76,6 @@ export function Navbar() {
           </div>
 
           <div className="hidden md:flex items-center gap-4">
-            <Link href="/dashboard">
-              <Button variant="ghost" size="sm" className="gap-2 font-black text-secondary italic tracking-tighter">
-                <User className="h-4 w-4" />
-                DASHBOARD
-              </Button>
-            </Link>
             <Link href="/auth">
               <Button size="sm" className="btn-orange rounded-xl px-6 font-black h-11 italic tracking-tighter uppercase">
                 <LogIn className="h-4 w-4 mr-2" />
@@ -119,9 +113,7 @@ export function Navbar() {
               );
             })}
             <hr className="my-2 border-border" />
-            <Link href="/dashboard" onClick={() => setIsOpen(false)} className="flex items-center gap-3 px-4 py-4 text-lg font-black text-secondary italic uppercase tracking-tighter">
-              <User className="h-5 w-5" /> Dashboard
-            </Link>
+            {/* dashboard link removed for admin-only flow */}
             <Link href="/auth" onClick={() => setIsOpen(false)} className="flex items-center gap-3 px-4 py-4 text-lg font-black text-primary italic uppercase tracking-tighter">
               <LogIn className="h-5 w-5" /> Login / Register
             </Link>
