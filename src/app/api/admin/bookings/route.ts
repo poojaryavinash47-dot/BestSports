@@ -29,3 +29,27 @@ export async function GET(req: Request) {
     conn.release();
   }
 }
+
+export async function POST(req: Request) {
+  try {
+    const data = await req.json();
+    // Generate a unique booking ID
+    const id = `BK${Math.floor(Math.random() * 900000 + 100000)}`;
+    const { sport, venue, date, time, status = 'pending', fullName, phone, email, batch, notes } = data;
+
+    // Insert into bookings table (add extra columns if needed)
+    const conn = await pool.getConnection();
+    try {
+      await conn.query(
+        'INSERT INTO bookings (id, sport, venue, date, time, status) VALUES (?, ?, ?, ?, ?, ?)',
+        [id, sport, venue, date, time, status]
+      );
+      // Optionally, store user info in a separate table or extend bookings table schema
+      return NextResponse.json({ success: true, id });
+    } finally {
+      conn.release();
+    }
+  } catch (err) {
+    return NextResponse.json({ success: false, error: err?.toString() });
+  }
+}

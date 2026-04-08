@@ -49,7 +49,26 @@ export function CourtCard({ court }: CourtCardProps) {
           <h3 className="font-headline text-lg font-semibold tracking-tight text-secondary">
             {court.name}
           </h3>
-          <span className="text-sm font-bold text-primary">{court.price}</span>
+          {court.id.startsWith('b') ? (
+            <div className="text-right">
+              <div className="text-xs font-semibold text-gray-500 mb-1">Pricing</div>
+              <div className="space-y-0.5">
+                <div><span className="font-bold text-primary text-base">₹300</span> <span className="text-xs text-gray-500">Weekdays/hr</span></div>
+                <div><span className="font-bold text-primary text-base">₹350</span> <span className="text-xs text-gray-500">Weekends/hr</span></div>
+              </div>
+            </div>
+          ) : court.id.startsWith('c') ? (
+            <div className="text-right">
+              <div className="text-xs font-semibold text-gray-500 mb-1">Time-based Pricing</div>
+              <div className="space-y-0.5">
+                <div><span className="font-bold text-primary text-base">₹450</span> <span className="text-xs text-gray-500">(5am–12pm)</span></div>
+                <div><span className="font-bold text-primary text-base">₹400</span> <span className="text-xs text-gray-500">(12pm–4pm)</span></div>
+                <div><span className="font-bold text-primary text-base">₹499</span> <span className="text-xs text-gray-500">(4pm–11pm)</span></div>
+              </div>
+            </div>
+          ) : (
+            <span className="text-sm font-bold text-primary">{court.price}</span>
+          )}
         </div>
 
         <p className="text-xs text-muted-foreground">
@@ -60,12 +79,36 @@ export function CourtCard({ court }: CourtCardProps) {
         </p>
 
         <div className="mt-2 flex gap-3">
-          <Button
-            className="flex-1 rounded-full text-sm font-semibold"
-            onClick={() => handleBooking(court)}
-          >
-            Book Now
-          </Button>
+          {court.id.startsWith('c') ? (
+            <a
+              href="https://playo.co/venues/bangalore/bestshot-cricket-academy-yelahanka-new-town-bengaluru"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex-1"
+            >
+              <Button className="w-full rounded-full text-sm font-semibold">
+                Book Now
+              </Button>
+            </a>
+          ) : court.id.startsWith('b') ? (
+            <a
+              href="https://playo.co/venues/bangalore/bestshot-badminton-academy-yelahanka-new-town-bengaluru"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex-1"
+            >
+              <Button className="w-full rounded-full text-sm font-semibold">
+                Book Now
+              </Button>
+            </a>
+          ) : (
+            <Button
+              className="flex-1 rounded-full text-sm font-semibold"
+              onClick={() => handleBooking(court)}
+            >
+              Book Now
+            </Button>
+          )}
 
           <Link href={`/court/${court.id}`} className="flex-1">
             <Button

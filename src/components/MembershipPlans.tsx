@@ -2,22 +2,22 @@
 
 "use client";
 
-
 import React, { useState } from "react";
+import dynamic from "next/dynamic";
+const MembershipBookingForm = dynamic(() => import("./MembershipBookingForm"), { ssr: false });
 import { motion, AnimatePresence } from "framer-motion";
 import type { Variants } from "framer-motion";
 import Image from "next/image";
-import BookingModal from "./BookingModal.client";
 
 const cricketPlans = [
   {
-    name: "Weekend",
-    price: "₹2500/month",
+    name: "Basic",
+    price: "₹4000/month",
     image: "/c1.png",
     features: [
-      "Sat & Sun coaching",
-      "No benefits",
-      "No discounts on bookings",
+      "Mon–Fri coaching",
+      "1 hour session",
+      "Batch timings included",
     ],
     batchTimings: [
       "5:30 AM – 7:30 AM",
@@ -25,20 +25,19 @@ const cricketPlans = [
       "6:30 PM – 8:30 PM",
     ],
     theme: {
-      bar: "bg-green-500",
-      price: "text-green-600",
-      button: "from-green-500 to-blue-400",
+      bar: "bg-blue-500",
+      price: "text-blue-700",
+      button: "from-blue-500 to-green-500",
     },
     highlight: false,
   },
   {
-    name: "Flex",
-    price: "₹15000/6 months",
+    name: "Pro",
+    price: "₹20000/6 months",
     image: "/c2.png",
     features: [
-      "Flexible Sat & Sun",
-      "No benefits",
-      "No discounts on bookings",
+      "2 hour sessions",
+      "Skill development focus",
     ],
     batchTimings: [
       "5:30 AM – 7:30 AM",
@@ -46,20 +45,19 @@ const cricketPlans = [
       "6:30 PM – 8:30 PM",
     ],
     theme: {
-      bar: "bg-blue-400",
-      price: "text-blue-600",
-      button: "from-blue-400 to-green-400",
+      bar: "bg-green-600",
+      price: "text-green-700",
+      button: "from-green-600 to-blue-500",
     },
     highlight: false,
   },
   {
-    name: "3-Day",
-    price: "₹20000/year (Fri–Sun)",
+    name: "Elite",
+    price: "₹30000/year",
     image: "/c3.png",
     features: [
-      "Fri–Sun coaching",
-      "No benefits",
-      "No discounts on bookings",
+      "Full access anytime",
+      "Premium access",
     ],
     batchTimings: [
       "5:30 AM – 7:30 AM",
@@ -67,53 +65,63 @@ const cricketPlans = [
       "6:30 PM – 8:30 PM",
     ],
     theme: {
-      bar: "bg-green-700",
-      price: "text-green-800",
-      button: "from-green-700 to-blue-700",
+      bar: "bg-blue-900",
+      price: "text-blue-900",
+      button: "from-blue-900 to-green-700",
     },
-    highlight: false,
-  },
-  {
-    name: "Full",
-    price: "₹35000/year",
-    image: "/c3.png",
-    features: [
-      "Full week premium access",
-      "No benefits",
-      "No discounts on bookings",
-    ],
-    batchTimings: [
-      "5:30 AM – 7:30 AM",
-      "4:30 PM – 6:30 PM",
-      "6:30 PM – 8:30 PM",
-    ],
-    theme: {
-      bar: "bg-blue-700",
-      price: "text-blue-800",
-      button: "from-blue-700 to-green-800",
-    },
-    highlight: false,
+    highlight: true,
   },
 ];
 
 const badmintonPlans = [
   {
-    name: "Badminton Coaching",
-    price: "₹4000/month",
+    name: "Monthly Plan",
+    price: "₹6,600",
+    duration: "1 Month",
     image: "/b2.png",
     features: [
-      "Mon–Fri",
-      "Multiple batch timings",
-      "No benefits",
-      "No discounts on bookings",
+      "Court access",
+      "Flexible timings",
+      "Coaching support",
+      "Member events"
     ],
-    batchTimings: [
-      "5–6 AM",
-      "6–7 AM",
-      "4:30–5:30 PM",
-      "5–6 PM",
-      "6–7 PM",
-      "7–8 PM",
+    theme: {
+      bar: "bg-orange-500",
+      price: "text-orange-700",
+      button: "from-orange-500 to-purple-500",
+    },
+    highlight: false,
+    badge: null,
+  },
+  {
+    name: "3 Months Plan",
+    price: "₹18,150",
+    duration: "3 Months",
+    image: "/b2.png",
+    features: [
+      "Court access",
+      "Flexible timings",
+      "Coaching support",
+      "Priority booking"
+    ],
+    theme: {
+      bar: "bg-orange-500",
+      price: "text-orange-700",
+      button: "from-orange-500 to-purple-500",
+    },
+    highlight: false,
+    badge: null,
+  },
+  {
+    name: "6 Months Plan",
+    price: "₹33,000",
+    duration: "6 Months",
+    image: "/b2.png",
+    features: [
+      "Court access",
+      "Flexible timings",
+      "Coaching support",
+      "Exclusive discounts"
     ],
     theme: {
       bar: "bg-orange-500",
@@ -121,6 +129,7 @@ const badmintonPlans = [
       button: "from-orange-500 to-purple-500",
     },
     highlight: true,
+    badge: "Best Value",
   },
 ];
 
@@ -176,15 +185,16 @@ export default function SubscriptionPlans() {
   type Plan = {
     name: string;
     price: string;
+    duration?: string;
     image: string;
     features: string[];
-    batchTimings: string[];
     theme: {
       bar: string;
       price: string;
       button: string;
     };
     highlight?: boolean;
+    badge?: string | null;
   };
 
   const renderPlanCard = (plan: Plan, idx: number) => (
@@ -193,12 +203,12 @@ export default function SubscriptionPlans() {
       custom={idx}
       variants={fadeUp}
       whileHover={{ scale: plan.highlight ? 1.03 : 1.025 }}
-      className={`relative flex flex-col rounded-2xl bg-white shadow-md border border-gray-100 transition-all duration-200 overflow-hidden min-h-[480px] ${plan.highlight ? 'scale-100 z-10 ring-2 ring-blue-400' : ''}`}
+      className={`relative flex flex-col rounded-2xl bg-white shadow-md border border-gray-100 transition-all duration-200 overflow-hidden min-h-[420px] max-w-sm w-full mx-auto ${plan.highlight ? 'scale-100 z-10 ring-2 ring-orange-400' : ''}`}
       style={plan.highlight ? { zIndex: 10 } : {}}
     >
-      {/* Popular Badge */}
-      {plan.highlight && (
-        <div className="absolute top-4 right-4 bg-purple-600 text-white text-xs px-3 py-1 rounded-full font-semibold">Popular</div>
+      {/* Badge for Best Value or Popular */}
+      {plan.badge && (
+        <div className="absolute top-4 right-4 bg-primary text-white text-xs px-3 py-1 rounded-full font-bold shadow">{plan.badge}</div>
       )}
       {/* Top bar */}
       <div className={`h-2 w-full ${plan.theme.bar}`} />
@@ -208,11 +218,12 @@ export default function SubscriptionPlans() {
       </div>
       {/* Card Content */}
       <div className="p-5 flex-1 flex flex-col justify-between">
-        <h3 className="text-xl font-semibold mb-1 text-gray-900 text-center">{plan.name}</h3>
+        <h3 className="text-xl font-bold mb-1 text-gray-900 text-center">{plan.name}</h3>
+        {plan.duration && <div className="text-xs text-gray-500 mb-1 text-center">{plan.duration}</div>}
         <div className="mb-2 flex items-end justify-center gap-2">
-          <span className={`text-2xl font-bold ${plan.theme.price}`}>{plan.price}</span>
+          <span className={`text-2xl font-extrabold ${plan.theme.price}`}>{plan.price}</span>
         </div>
-        <ul className="mb-3 space-y-2 text-left mx-auto max-w-xs">
+        <ul className="mb-4 space-y-2 text-left mx-auto max-w-xs">
           {plan.features.map((f: string, i: number) => (
             <li key={i} className="flex items-center gap-2 text-sm">
               <span className="text-green-500">
@@ -222,16 +233,8 @@ export default function SubscriptionPlans() {
             </li>
           ))}
         </ul>
-        <div className="mb-3">
-          <div className="text-xs font-semibold text-gray-500 text-center mb-1">Batch Timings</div>
-          <ul className="flex flex-wrap justify-center gap-2 text-xs">
-            {plan.batchTimings.map((t: string, i: number) => (
-              <li key={i} className="bg-gray-100 rounded px-2 py-1 text-gray-700 border border-gray-200">{t}</li>
-            ))}
-          </ul>
-        </div>
         <button
-          className={`mt-auto py-2.5 px-5 rounded-xl font-semibold text-white transition-all duration-200 bg-gradient-to-r ${plan.theme.button} focus:outline-none focus:ring-2 focus:ring-offset-2`}
+          className={`mt-auto py-2.5 px-5 rounded-xl font-bold text-white transition-all duration-200 bg-gradient-to-r ${plan.theme.button} focus:outline-none focus:ring-2 focus:ring-offset-2`}
           onClick={() => {
             setSelectedPlan(plan);
             setModalOpen(true);
@@ -256,18 +259,18 @@ export default function SubscriptionPlans() {
               className={`px-5 py-2 rounded-full font-semibold transition-colors duration-200 border-2 ${tab === 'cricket' ? 'bg-blue-600 text-white border-blue-700 shadow' : 'bg-white text-blue-700 border-blue-200'}`}
               onClick={() => setTab('cricket')}
             >
-              Cricket Coaching Plans
+              Cricket Membership Plans
             </button>
             <button
               className={`px-5 py-2 rounded-full font-semibold transition-colors duration-200 border-2 ${tab === 'badminton' ? 'bg-orange-500 text-white border-orange-600 shadow' : 'bg-white text-orange-600 border-orange-200'}`}
               onClick={() => setTab('badminton')}
             >
-              Badminton Coaching Plans
+              Badminton Membership Plans
             </button>
           </div>
         </div>
         <motion.div
-          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 max-w-7xl mx-auto"
+          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl gap-6 max-w-7xl mx-auto"
           initial="hidden"
           animate="visible"
           variants={{}}
@@ -275,12 +278,25 @@ export default function SubscriptionPlans() {
           {(tab === 'cricket' ? cricketPlans : badmintonPlans).map((plan, idx) => renderPlanCard(plan, idx))}
         </motion.div>
       </section>
-      <BookingModal
-        isOpen={modalOpen}
-        onClose={() => setModalOpen(false)}
-        plan={selectedPlan}
-      />
+      {modalOpen && selectedPlan && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 backdrop-blur-sm">
+          <div className="relative w-full max-w-md mx-4 rounded-xl bg-white shadow-xl p-4 md:p-6 flex flex-col gap-3 min-h-[420px] max-h-[90vh] overflow-y-auto border border-gray-100">
+            <button
+              className="absolute top-4 right-4 text-gray-400 hover:text-gray-700 focus:outline-none"
+              onClick={() => setModalOpen(false)}
+              aria-label="Close"
+              type="button"
+            >
+              <svg width="24" height="24" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" /></svg>
+            </button>
+            <h2 className="text-lg md:text-xl font-bold text-gray-900 mb-0.5 tracking-tight text-center">Book Membership: {selectedPlan.name}</h2>
+            <div className="flex items-center gap-2 justify-center mb-2">
+              <span className="font-semibold text-blue-700 text-base md:text-lg">{selectedPlan.price}</span>
+            </div>
+            <MembershipBookingForm plan={selectedPlan} onSuccess={() => setModalOpen(false)} />
+          </div>
+        </div>
+      )}
     </>
   );
 }
-

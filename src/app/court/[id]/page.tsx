@@ -18,9 +18,10 @@ type CourtDetail = {
 };
 
 const COURTS: CourtDetail[] = [
+  // ...existing badminton courts...
   {
     id: "b1",
-    name: "Elite Indoor Court 1",
+    name: "Premium Hybrid Court 1",
     price: "₹400/hour",
     description:
       "High-grip wooden flooring with pro LED lighting. Ideal for intense singles and doubles practice sessions.",
@@ -33,7 +34,7 @@ const COURTS: CourtDetail[] = [
   },
   {
     id: "b2",
-    name: "Elite Indoor Court 2",
+    name: "Premium Hybrid Court 2",
     price: "₹450/hour",
     description:
       "Tournament-ready court with premium shuttle response and dedicated warm-up area.",
@@ -46,7 +47,7 @@ const COURTS: CourtDetail[] = [
   },
   {
     id: "b3",
-    name: "Training Court A",
+    name: "Premium Hybrid Court 3",
     price: "₹350/hour",
     description:
       "Perfect for coaching batches and drilling sessions with consistent bounce and clear court markings.",
@@ -59,7 +60,7 @@ const COURTS: CourtDetail[] = [
   },
   {
     id: "b4",
-    name: "Training Court B",
+    name: "Premium Hybrid Court 4",
     price: "₹350/hour",
     description:
       "Dedicated practice court with balanced lighting and ample side run-up space.",
@@ -72,7 +73,7 @@ const COURTS: CourtDetail[] = [
   },
   {
     id: "b5",
-    name: "Club Court 1",
+    name: "Premium Hybrid Court 5",
     price: "₹500/hour",
     description:
       "Club-level court with exclusive member lounge access and premium shuttle options.",
@@ -83,23 +84,11 @@ const COURTS: CourtDetail[] = [
       "/b4.png",
     ],
   },
-  {
-    id: "b6",
-    name: "Club Court 2",
-    price: "₹500/hour",
-    description:
-      "Spacious indoor court designed for league nights and friendly club matches.",
-    badge: "Available",
-    images: [
-      "/b1.png",
-      "/b2.png",
-      "/b3.png",
-    ],
-  },
+  // Cricket courts with time-based pricing
   {
     id: "c1",
-    name: "Pro Turf Arena 1",
-    price: "₹1,200/hour",
+    name: "Outdoor AstroTurf Wicket 1",
+    price: "₹450 (5am-12pm), ₹400 (12pm-4pm), ₹499 (4pm-11pm)",
     description:
       "Full-size cricket turf with laser-leveled outfield, ideal for nets and practice matches.",
     badge: "Available",
@@ -111,8 +100,8 @@ const COURTS: CourtDetail[] = [
   },
   {
     id: "c2",
-    name: "Pro Turf Arena 2",
-    price: "₹1,300/hour",
+    name: "Outdoor AstroTurf Wicket 2",
+    price: "₹450 (5am-12pm), ₹400 (12pm-4pm), ₹499 (4pm-11pm)",
     description:
       "Match-ready turf with side nets, perfect for high-intensity training sessions.",
     badge: "Prime Slot",
@@ -124,8 +113,8 @@ const COURTS: CourtDetail[] = [
   },
   {
     id: "c3",
-    name: "Weekend League Ground",
-    price: "₹1,500/hour",
+    name: "Outdoor AstroTurf Wicket 3",
+    price: "₹450 (5am-12pm), ₹400 (12pm-4pm), ₹499 (4pm-11pm)",
     description:
       "Dedicated weekend ground for corporate and academy leagues with pavilion seating.",
     badge: "Popular",
@@ -137,8 +126,8 @@ const COURTS: CourtDetail[] = [
   },
   {
     id: "c4",
-    name: "Academy Practice Ground",
-    price: "₹1,000/hour",
+    name: "Outdoor AstroTurf Wicket 4",
+    price: "₹450 (5am-12pm), ₹400 (12pm-4pm), ₹499 (4pm-11pm)",
     description:
       "Coaching-first ground with multiple net lanes and side practice areas.",
     badge: "Available",
@@ -150,8 +139,8 @@ const COURTS: CourtDetail[] = [
   },
   {
     id: "c5",
-    name: "Night Match Arena",
-    price: "₹1,800/hour",
+    name: "Outdoor AstroTurf Wicket 5",
+    price: "₹450 (5am-12pm), ₹400 (12pm-4pm), ₹499 (4pm-11pm)",
     description:
       "Floodlit stadium-style ground with HD LED lights for night tournaments.",
     badge: "Floodlights",
@@ -163,8 +152,8 @@ const COURTS: CourtDetail[] = [
   },
   {
     id: "c6",
-    name: "Corporate League Ground",
-    price: "₹1,600/hour",
+    name: "Outdoor AstroTurf Wicket 6",
+    price: "₹450 (5am-12pm), ₹400 (12pm-4pm), ₹499 (4pm-11pm)",
     description:
       "Ideal for day-long tournaments with scoring table, PA system, and spectator zones.",
     badge: "Available",
@@ -209,12 +198,27 @@ export default function CourtPage({ params }: CourtPageProps) {
               {court.description}
             </p>
             <div className="mt-5 flex items-end gap-3">
-              <span className="text-2xl md:text-3xl font-bold text-primary">
-                {court.price}
-              </span>
-              <span className="text-xs font-semibold uppercase tracking-[0.2em] text-muted-foreground">
-                per hour
-              </span>
+              {court.id.startsWith('c') ? (
+                <div>
+                  <div className="text-2xl md:text-3xl font-bold text-primary mb-1">Time-based Pricing</div>
+                  <table className="text-sm md:text-base border-separate border-spacing-x-4">
+                    <tbody>
+                      <tr><td className="font-semibold">Morning</td><td>₹450 <span className="text-xs">(5am–12pm)</span></td></tr>
+                      <tr><td className="font-semibold">Afternoon</td><td>₹400 <span className="text-xs">(12pm–4pm)</span></td></tr>
+                      <tr><td className="font-semibold">Evening</td><td>₹499 <span className="text-xs">(4pm–11pm)</span></td></tr>
+                    </tbody>
+                  </table>
+                </div>
+              ) : (
+                <>
+                  <span className="text-2xl md:text-3xl font-bold text-primary">
+                    {court.price}
+                  </span>
+                  <span className="text-xs font-semibold uppercase tracking-[0.2em] text-muted-foreground">
+                    per hour
+                  </span>
+                </>
+              )}
             </div>
           </div>
           <div className="grid gap-8 lg:grid-cols-[2fr,1fr] items-start">
@@ -267,7 +271,15 @@ export default function CourtPage({ params }: CourtPageProps) {
                 </div>
                 <div className="flex justify-between">
                   <span>Rate</span>
-                  <span className="font-semibold text-primary">{court.price}</span>
+                  {court.id.startsWith('c') ? (
+                    <span className="font-semibold text-primary">
+                      <span className="block">₹450 (5am–12pm)</span>
+                      <span className="block">₹400 (12pm–4pm)</span>
+                      <span className="block">₹499 (4pm–11pm)</span>
+                    </span>
+                  ) : (
+                    <span className="font-semibold text-primary">{court.price}</span>
+                  )}
                 </div>
                 <div className="flex justify-between">
                   <span>Status</span>

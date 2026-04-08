@@ -16,7 +16,7 @@ const COURTS = [
     price: 400,
     rating: 4.8,
     courts: 8,
-    image: "/b1.jpg"
+    image: "/b1.png"
   },
   {
     id: "b2",
@@ -25,7 +25,7 @@ const COURTS = [
     price: 600,
     rating: 5.0,
     courts: 12,
-    image: "/b2.jpg"
+    image: "/b2.png"
   },
   {
     id: "b3",
@@ -34,7 +34,7 @@ const COURTS = [
     price: 350,
     rating: 4.6,
     courts: 6,
-    image: "/b3.jpg"
+    image: "/b3.png"
   },
   {
     id: "b4",
@@ -43,7 +43,7 @@ const COURTS = [
     price: 500,
     rating: 4.7,
     courts: 10,
-    image: "/b4.jpg"
+    image: "/b4.png"
   }
 ];
 

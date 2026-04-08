@@ -1,4 +1,6 @@
+
 import Link from "next/link";
+import Image from "next/image";
 import { Instagram, Twitter, Facebook, Mail, MapPin, Phone } from "lucide-react";
 
 export function Footer() {
@@ -7,13 +9,15 @@ export function Footer() {
       <div className="container mx-auto px-4">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-12">
           <div className="space-y-6">
-            <div className="flex flex-col">
-              <span className="font-headline text-3xl font-black leading-none tracking-tighter uppercase italic">
-                BEST SHOT
-              </span>
-              <span className="font-headline text-sm font-bold leading-none tracking-[0.2em] text-primary uppercase">
-                CRICKET
-              </span>
+            <div className="flex flex-col items-start">
+              <Image
+                src="/logo.png"
+                alt="Best Shot BSBA Sports Arena Logo"
+                width={120}
+                height={48}
+                className="h-14 w-auto object-contain"
+                priority
+              />
             </div>
             <p className="text-sm text-blue-100/70 font-medium leading-relaxed">
               Professional cricket arenas and badminton courts for the serious athlete. Excellence in maintenance and community since 2025.
@@ -34,9 +38,10 @@ export function Footer() {
           <div>
             <h3 className="font-headline font-black text-lg mb-6 uppercase italic tracking-tighter">Quick Links</h3>
             <ul className="space-y-4 text-sm font-medium">
-              <li><Link href="/cricket" className="text-blue-100/70 hover:text-primary transition-colors uppercase italic tracking-tighter">Cricket Grounds</Link></li>
-              <li><Link href="/badminton" className="text-blue-100/70 hover:text-primary transition-colors uppercase italic tracking-tighter">Badminton Courts</Link></li>
+              
+              <li><Link href="/subscriptions" className="text-blue-100/70 hover:text-primary transition-colors uppercase italic tracking-tighter">Subscriptions Plans</Link></li>
               <li><Link href="/membership" className="text-blue-100/70 hover:text-primary transition-colors uppercase italic tracking-tighter">Membership Plans</Link></li>
+              <li><Link href="/gallery" className="text-blue-100/70 hover:text-primary transition-colors uppercase italic tracking-tighter">Gallery</Link></li>
               <li><Link href="/auth" className="text-blue-100/70 hover:text-primary transition-colors uppercase italic tracking-tighter">Join the Club</Link></li>
             </ul>
           </div>

@@ -5,6 +5,20 @@ let initialized = false;
 let initPromise: Promise<void> | null = null;
 
 async function ensureTables(conn: any) {
+    await conn.query(`
+      CREATE TABLE IF NOT EXISTS subscription_bookings (
+        id INT AUTO_INCREMENT PRIMARY KEY,
+        full_name VARCHAR(255),
+        phone VARCHAR(50),
+        email VARCHAR(255),
+        batch VARCHAR(100),
+        start_date VARCHAR(50),
+        notes TEXT,
+        plan_name VARCHAR(255),
+        plan_price VARCHAR(50),
+        created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+      ) ENGINE=InnoDB;
+    `);
   await conn.query(`
     CREATE TABLE IF NOT EXISTS migrations (
       id INT AUTO_INCREMENT PRIMARY KEY,
@@ -33,6 +47,19 @@ async function ensureTables(conn: any) {
       date VARCHAR(50),
       time VARCHAR(50),
       status VARCHAR(50)
+    ) ENGINE=InnoDB;
+  `);
+  await conn.query(`
+    CREATE TABLE IF NOT EXISTS membership_bookings (
+      id INT AUTO_INCREMENT PRIMARY KEY,
+      full_name VARCHAR(255),
+      phone VARCHAR(50),
+      email VARCHAR(255),
+      start_date VARCHAR(50),
+      notes TEXT,
+      plan_name VARCHAR(255),
+      plan_price VARCHAR(50),
+      created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
     ) ENGINE=InnoDB;
   `);
 }
