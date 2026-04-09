@@ -1,6 +1,7 @@
 import type {Metadata} from 'next';
 import './globals.css';
 import { Toaster } from "@/components/ui/toaster";
+import { FloatingWhatsApp, ScrollToTop } from "@/components/ui/FloatingButtons";
 import '@/lib/db-init';
 
 export const metadata: Metadata = {
@@ -22,6 +23,8 @@ export default function RootLayout({
       </head>
       <body className="font-body antialiased min-h-screen bg-background text-foreground">
         {children}
+        <FloatingWhatsApp />
+        <ScrollToTop />
         <Toaster />
       </body>
     </html>

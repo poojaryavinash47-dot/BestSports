@@ -18,6 +18,8 @@ const cricketPlans = [
       "Mon–Fri coaching",
       "1 hour session",
       "Batch timings included",
+      "No benefits",
+      "No discounts on bookings",
     ],
     batchTimings: [
       "5:30 AM – 7:30 AM",
@@ -38,6 +40,8 @@ const cricketPlans = [
     features: [
       "2 hour sessions",
       "Skill development focus",
+      "No benefits",
+      "No discounts on bookings",
     ],
     batchTimings: [
       "5:30 AM – 7:30 AM",
@@ -58,6 +62,8 @@ const cricketPlans = [
     features: [
       "Full access anytime",
       "Premium access",
+      "No benefits",
+      "No discounts on bookings",
     ],
     batchTimings: [
       "5:30 AM – 7:30 AM",
@@ -83,7 +89,8 @@ const badmintonPlans = [
       "Court access",
       "Flexible timings",
       "Coaching support",
-      "Member events"
+      "No benefits",
+      "No discounts on bookings",
     ],
     theme: {
       bar: "bg-orange-500",
@@ -102,7 +109,8 @@ const badmintonPlans = [
       "Court access",
       "Flexible timings",
       "Coaching support",
-      "Priority booking"
+      "No benefits",
+      "No discounts on bookings",
     ],
     theme: {
       bar: "bg-orange-500",
@@ -121,7 +129,8 @@ const badmintonPlans = [
       "Court access",
       "Flexible timings",
       "Coaching support",
-      "Exclusive discounts"
+      "No benefits",
+      "No discounts on bookings",
     ],
     theme: {
       bar: "bg-orange-500",

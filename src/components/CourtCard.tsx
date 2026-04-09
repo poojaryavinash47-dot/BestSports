@@ -86,7 +86,7 @@ export function CourtCard({ court }: CourtCardProps) {
               rel="noopener noreferrer"
               className="flex-1"
             >
-              <Button className="w-full rounded-full text-sm font-semibold">
+              <Button className="rounded-full text-sm font-semibold px-4 min-w-[100px] max-w-[140px]">
                 Book Now
               </Button>
             </a>
@@ -97,27 +97,20 @@ export function CourtCard({ court }: CourtCardProps) {
               rel="noopener noreferrer"
               className="flex-1"
             >
-              <Button className="w-full rounded-full text-sm font-semibold">
+              <Button className="rounded-full text-sm font-semibold px-4 min-w-[100px] max-w-[140px]">
                 Book Now
               </Button>
             </a>
           ) : (
             <Button
-              className="flex-1 rounded-full text-sm font-semibold"
+              className="rounded-full text-sm font-semibold px-4 min-w-[100px] max-w-[140px]"
               onClick={() => handleBooking(court)}
             >
               Book Now
             </Button>
           )}
 
-          <Link href={`/court/${court.id}`} className="flex-1">
-            <Button
-              variant="outline"
-              className="w-full rounded-full text-sm font-semibold"
-            >
-              Explore
-            </Button>
-          </Link>
+          {/* Explore button removed for cricket and badminton courts */}
         </div>
       </div>
     </Card>

@@ -39,7 +39,7 @@ export default function MembershipBookingForm({ plan, onSuccess }: { plan: { nam
       const amountMatch = plan.price.replace(/[^\d]/g, "");
       const amount = parseInt(amountMatch || "1000", 10) * 100; // in paise
       const options = {
-        key: process.env.NEXT_PUBLIC_RAZORPAY_KEY || 'rzp_test_1DP5mmOlF5G5ag',
+        key: 'rzp_test_SFWS45gPercdHp',
         amount,
         currency: 'INR',
         name: plan.name,

@@ -186,14 +186,14 @@ export default function Home() {
                 <div className="relative">
                   {/* centered cards */}
                   <div className="flex items-center justify-center">
-                    <div className="flex gap-6">
+                    <div className="flex flex-wrap gap-4 md:gap-6 justify-center">
                       {packagePreviews.map((p, i) => (
                         <div
                           key={p.id}
-                          className={`flex flex-col items-center justify-center text-center rounded-xl p-6 shadow-md border border-white/5 bg-slate-900 text-white min-w-[260px] md:min-w-[300px] ${i === 2 ? 'ml-3 md:ml-6' : ''}`}
+                          className={`flex flex-col items-center justify-center text-center rounded-xl p-4 sm:p-6 shadow-md border border-white/5 bg-slate-900 text-white w-[90vw] max-w-[260px] md:min-w-[300px] md:max-w-[320px] ${i === 2 ? 'ml-0 md:ml-6' : ''}`}
                         >
                           <div className="text-xs tracking-widest uppercase opacity-70 mb-3">{p.brand}</div>
-                          <div className={`text-3xl md:text-4xl font-black tracking-tight mb-3 ${p.titleColor || ''}`}>{p.title}</div>
+                          <div className={`text-2xl md:text-4xl font-black tracking-tight mb-3 ${p.titleColor || ''}`}>{p.title}</div>
                           <div className="text-sm text-muted-foreground max-w-xs">{p.subtitle}</div>
                         </div>
                       ))}
