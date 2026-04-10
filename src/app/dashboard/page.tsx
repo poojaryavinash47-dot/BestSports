@@ -4,11 +4,19 @@ import { useEffect, useState } from "react";
 
 type Booking = {
   id: string;
-  sport: string;
-  venue: string;
+  sport?: string;
+  venue?: string;
   date: string;
-  time: string;
-  status: string;
+  time?: string;
+  status?: string;
+  fullName?: string;
+  phone?: string;
+  email?: string;
+  batch?: string;
+  notes?: string;
+  planName?: string;
+  planPrice?: string;
+  type: 'regular' | 'subscription' | 'membership';
 };
 
 export default function DashboardPage() {
@@ -95,26 +103,34 @@ export default function DashboardPage() {
               <thead>
                 <tr className="text-left border-b bg-slate-50">
                   <th className="p-3 font-bold uppercase text-xs tracking-widest">ID</th>
-                  <th className="p-3 font-bold uppercase text-xs tracking-widest">Sport</th>
-                  <th className="p-3 font-bold uppercase text-xs tracking-widest">Venue</th>
-                  <th className="p-3 font-bold uppercase text-xs tracking-widest">Date</th>
+                  <th className="p-3 font-bold uppercase text-xs tracking-widest">Type</th>
+                  <th className="p-3 font-bold uppercase text-xs tracking-widest">Name</th>
+                  <th className="p-3 font-bold uppercase text-xs tracking-widest">Sport/Plan</th>
                   <th className="p-3 font-bold uppercase text-xs tracking-widest">Time</th>
-                  <th className="p-3 font-bold uppercase text-xs tracking-widest">Status</th>
+                  <th className="p-3 font-bold uppercase text-xs tracking-widest">Date</th>
+                  <th className="p-3 font-bold uppercase text-xs tracking-widest">Status/Price</th>
                 </tr>
               </thead>
               <tbody>
                 {bookings.map((b) => (
-                  <tr key={b.id} className="border-b hover:bg-blue-50/40 transition-colors">
+                  <tr key={b.id + b.type} className="border-b hover:bg-blue-50/40 transition-colors">
                     <td className="p-3 font-mono text-xs">{b.id}</td>
-                    <td className="p-3">{b.sport}</td>
-                    <td className="p-3">{b.venue}</td>
+                    <td className="p-3 capitalize">{b.type}</td>
+                    <td className="p-3">{b.fullName || '-'}</td>
+                    <td className="p-3">{b.sport || b.planName || '-'}</td>
+                    <td className="p-3">{[b.time, b.batch].filter(Boolean).join(', ') || '-'}</td>
                     <td className="p-3">{b.date}</td>
-                    <td className="p-3">{b.time}</td>
                     <td className="p-3">
-                      <span className={`px-3 py-1 rounded-full text-xs font-bold shadow-sm 
-                        ${b.status === 'confirmed' ? 'bg-green-100 text-green-700' : 
-                          b.status === 'pending' ? 'bg-yellow-100 text-yellow-700' : 
-                          'bg-gray-100 text-gray-700'}`}>{b.status}</span>
+                      {b.type === 'regular' ? (
+                        <span className={`px-3 py-1 rounded-full text-xs font-bold shadow-sm 
+                          ${b.status === 'confirmed' ? 'bg-green-100 text-green-700' : 
+                            b.status === 'pending' ? 'bg-yellow-100 text-yellow-700' : 
+                            'bg-gray-100 text-gray-700'}`}>{b.status}</span>
+                      ) : (
+                        <span className="px-3 py-1 rounded-full text-xs font-bold shadow-sm bg-blue-100 text-blue-700">
+                          ₹{b.planPrice || '-'}
+                        </span>
+                      )}
                     </td>
                   </tr>
                 ))}

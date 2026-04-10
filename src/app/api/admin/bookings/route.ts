@@ -22,8 +22,31 @@ export async function GET(req: Request) {
 
   const conn = await pool.getConnection();
   try {
-    const [rows] = await conn.query('SELECT id, sport, venue, date, time, status FROM bookings ORDER BY date DESC');
-    return NextResponse.json({ bookings: rows });
+    // Fetch all booking types
+    const [bookings]: any = await conn.query('SELECT id, sport, venue, date, time, status FROM bookings');
+    const [subscriptionBookings]: any = await conn.query('SELECT id, full_name as fullName, phone, email, batch, start_date as date, notes, plan_name as planName, plan_price as planPrice FROM subscription_bookings');
+    const [membershipBookings]: any = await conn.query('SELECT id, full_name as fullName, phone, email, start_date as date, notes, plan_name as planName, plan_price as planPrice FROM membership_bookings');
+
+    // Normalize and combine all bookings
+    const allBookings = [
+      ...bookings.map((b: any) => ({
+        ...b,
+        type: 'regular',
+      })),
+      ...subscriptionBookings.map((b: any) => ({
+        ...b,
+        type: 'subscription',
+      })),
+      ...membershipBookings.map((b: any) => ({
+        ...b,
+        type: 'membership',
+      })),
+    ];
+
+    // Sort by date descending (most recent first)
+    allBookings.sort((a: any, b: any) => new Date(b.date).getTime() - new Date(a.date).getTime());
+
+    return NextResponse.json({ bookings: allBookings });
   } catch (err) {
     return NextResponse.json({ message: 'Query failed' }, { status: 500 });
   } finally {
