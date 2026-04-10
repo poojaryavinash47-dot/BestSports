@@ -95,7 +95,7 @@ export default function MembershipBookingForm({ plan, onSuccess }: { plan: { nam
     <motion.form layout className="flex flex-col gap-4 p-4" onSubmit={handleSubmit}>
       {success && (
         <div className="mb-4 p-3 rounded bg-green-100 text-green-800 text-center font-semibold border border-green-300">
-          Membership booking successful! Thank you.
+          Booking confirmed! Thank you.
         </div>
       )}
       <div>

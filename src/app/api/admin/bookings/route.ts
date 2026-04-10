@@ -1,6 +1,7 @@
 import { NextResponse } from "next/server";
 import jwt from "jsonwebtoken";
 import pool from "@/lib/db";
+import { config } from "@/lib/dbconfig";
 
 function parseToken(req: Request) {
   const cookie = req.headers.get('cookie') || '';
@@ -14,7 +15,7 @@ export async function GET(req: Request) {
   if (!token) return NextResponse.json({ message: 'Not authenticated' }, { status: 401 });
 
   try {
-    jwt.verify(token, process.env.JWT_SECRET || 'change_this_secret');
+    jwt.verify(token, config.JWT_SECRET);
   } catch (err) {
     return NextResponse.json({ message: 'Invalid token' }, { status: 401 });
   }

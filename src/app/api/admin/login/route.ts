@@ -2,6 +2,7 @@ import { NextResponse } from "next/server";
 import jwt from "jsonwebtoken";
 import crypto from "crypto";
 import pool from "@/lib/db";
+import { config } from "@/lib/dbconfig";
 
 export async function POST(req: Request) {
   try {
@@ -27,7 +28,7 @@ export async function POST(req: Request) {
         return NextResponse.json({ message: 'Invalid credentials' }, { status: 401 });
       }
 
-      const token = jwt.sign({ email: user.email, id: user.id }, process.env.JWT_SECRET || 'change_this_secret', { expiresIn: '8h' });
+      const token = jwt.sign({ email: user.email, id: user.id }, config.JWT_SECRET, { expiresIn: '8h' });
 
       const res = NextResponse.json({ ok: true });
       res.cookies.set('admin_token', token, { httpOnly: true, path: '/', maxAge: 8 * 60 * 60, secure: process.env.NODE_ENV === 'production' });

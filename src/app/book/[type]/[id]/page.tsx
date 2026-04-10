@@ -1,4 +1,3 @@
-
 "use client";
 
 import { useState, use } from "react";
@@ -40,7 +39,7 @@ export default function BookingPage({ params }: { params: Promise<{ type: string
   const discount = 0; // membership would apply here
   const finalAmount = totalAmount - discount;
 
-  const handleBooking = () => {
+  const handleBooking = async () => {
     if (!selectedSlot) {
       toast({
         title: "Missing Information",
@@ -52,9 +51,31 @@ export default function BookingPage({ params }: { params: Promise<{ type: string
 
     setIsProcessing(true);
     // Simulate Razorpay payment
-    setTimeout(() => {
+    setTimeout(async () => {
+      // Send booking data to backend
+      try {
+        const res = await fetch('/api/admin/bookings', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            sport: isCricket ? 'cricket' : 'badminton',
+            venue: isCricket ? 'Eden Garden Arena' : 'Olympic Badminton Hub',
+            date: date?.toISOString().split('T')[0],
+            time: selectedSlot,
+            status: 'confirmed',
+            // Add more fields if needed
+          })
+        });
+        if (res.ok) {
+          const data = await res.json();
+          window.location.href = `/booking-success?id=${data.id}`;
+        } else {
+          toast({ title: "Booking Failed", description: "Could not save booking.", variant: "destructive" });
+        }
+      } catch (e) {
+        toast({ title: "Booking Failed", description: "Network error.", variant: "destructive" });
+      }
       setIsProcessing(false);
-      window.location.href = `/booking-success?id=BK${Math.floor(Math.random() * 900000 + 100000)}`;
     }, 2000);
   };
 

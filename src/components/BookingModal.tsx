@@ -160,7 +160,7 @@ const BookingModal: React.FC<BookingModalProps> = ({ isOpen, onClose, plan }) =>
         >
           {success && (
             <div className="mb-4 p-3 rounded bg-green-100 text-green-800 text-center font-semibold border border-green-300">
-              Booking successful! Thank you.
+              Booking confirmed! Thank you.
             </div>
           )}
           <button

@@ -2,6 +2,7 @@ import { NextResponse } from "next/server";
 import jwt from "jsonwebtoken";
 import pool from "@/lib/db";
 import crypto from "crypto";
+import { config } from "@/lib/dbconfig";
 
 function parseToken(req: Request) {
   const cookie = req.headers.get('cookie') || '';
@@ -16,7 +17,7 @@ export async function POST(req: Request) {
     if (!token) return NextResponse.json({ message: 'Not authenticated' }, { status: 401 });
 
     let payload: any;
-    try { payload = jwt.verify(token, process.env.JWT_SECRET || 'change_this_secret'); } catch (e) { return NextResponse.json({ message: 'Invalid token' }, { status: 401 }); }
+    try { payload = jwt.verify(token, config.JWT_SECRET); } catch (e) { return NextResponse.json({ message: 'Invalid token' }, { status: 401 }); }
 
     const body = await req.json();
     const { current, password } = body || {};

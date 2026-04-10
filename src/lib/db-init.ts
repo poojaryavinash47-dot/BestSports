@@ -1,5 +1,6 @@
 import pool from './db';
 import crypto from 'crypto';
+import { config } from "./dbconfig";
 
 let initialized = false;
 let initPromise: Promise<void> | null = null;
@@ -87,10 +88,10 @@ export default async function initDb() {
         return;
       }
 
-      // Seed admin from env vars if provided
-      const adminEmail = process.env.ADMIN_EMAIL;
-      const adminPassword = process.env.ADMIN_PASSWORD;
-      const adminName = process.env.ADMIN_NAME || 'Admin';
+      // Seed admin from config if provided
+      const adminEmail = config.ADMIN_EMAIL;
+      const adminPassword = config.ADMIN_PASSWORD;
+      const adminName = config.ADMIN_NAME || 'Admin';
 
       if (adminEmail && adminPassword) {
         const [exists] = await conn.query('SELECT id FROM admins WHERE email = ?', [adminEmail]);

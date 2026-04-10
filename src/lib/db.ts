@@ -1,20 +1,12 @@
 import mysql from "mysql2/promise";
-
-const {
-  DB_HOST = 'localhost',
-  DB_PORT = '3306',
-  DB_USER = 'u684770053_admin',
-  DB_PASSWORD,
-  DB_NAME = 'u684770053_bestsportsdb',
-} = process.env;
-
+import { config } from "./dbconfig";
 
 const pool = mysql.createPool({
-  host: DB_HOST,
-  port: Number(DB_PORT) || 3306,
-  user: DB_USER,
-  password: DB_PASSWORD,
-  database: DB_NAME,
+  host: config.DB_HOST,
+  port: Number(config.DB_PORT) || 3306,
+  user: config.DB_USER,
+  password: config.DB_PASSWORD,
+  database: config.DB_NAME,
   waitForConnections: true,
   connectionLimit: 10,
 });
