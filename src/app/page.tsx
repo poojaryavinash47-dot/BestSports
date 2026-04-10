@@ -186,7 +186,7 @@ export default function Home() {
                 <div className="relative">
                   {/* centered cards */}
                   <div className="flex items-center justify-center">
-                    <div className="flex flex-wrap gap-4 md:gap-6 justify-center">
+                    <div className="flex flex-col md:flex-row gap-4 md:gap-6 justify-center items-stretch w-full">
                       {packagePreviews.map((p, i) => (
                         <div
                           key={p.id}
