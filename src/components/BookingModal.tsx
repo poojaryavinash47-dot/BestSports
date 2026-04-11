@@ -21,6 +21,24 @@ const getMinStartDate = () => {
   return date.toISOString().split("T")[0];
 };
 
+function planDurationMonths(price: string): number {
+  const p = (price || '').toLowerCase();
+  if (/6\s*months?/.test(p)) return 6;
+  if (/3\s*months?/.test(p)) return 3;
+  if (/2\s*months?/.test(p)) return 2;
+  if (/year|yearly|annual|12\s*months?/.test(p)) return 12;
+  return 1;
+}
+
+function calcEndDate(startDate: string, price: string): string {
+  if (!startDate) return '';
+  const d = new Date(startDate);
+  if (isNaN(d.getTime())) return '';
+  d.setMonth(d.getMonth() + planDurationMonths(price));
+  d.setDate(d.getDate() - 1);
+  return d.toISOString().split('T')[0];
+}
+
 const BookingModal: React.FC<BookingModalProps> = ({ isOpen, onClose, plan }) => {
   const [form, setForm] = useState({
     fullName: "",
@@ -240,6 +258,23 @@ const BookingModal: React.FC<BookingModalProps> = ({ isOpen, onClose, plan }) =>
               />
               {errors.startDate && <p className="text-xs text-red-500 mt-0.5">{errors.startDate}</p>}
             </div>
+            {form.startDate && plan && (
+              <div className="rounded-lg border border-blue-200 bg-blue-50 px-4 py-3 flex flex-col gap-0.5">
+                <p className="text-xs font-semibold text-blue-700 uppercase tracking-wide mb-1">Plan Validity</p>
+                <div className="flex items-center justify-between gap-2">
+                  <div className="flex flex-col items-center flex-1">
+                    <span className="text-[10px] text-gray-500 font-medium uppercase">Start Date</span>
+                    <span className="text-sm font-bold text-gray-800">{new Date(form.startDate).toLocaleDateString('en-IN', { day: '2-digit', month: 'short', year: 'numeric' })}</span>
+                  </div>
+                  <span className="text-blue-400 font-bold text-lg">→</span>
+                  <div className="flex flex-col items-center flex-1">
+                    <span className="text-[10px] text-gray-500 font-medium uppercase">End Date</span>
+                    <span className="text-sm font-bold text-blue-700">{new Date(calcEndDate(form.startDate, plan.price)).toLocaleDateString('en-IN', { day: '2-digit', month: 'short', year: 'numeric' })}</span>
+                  </div>
+                </div>
+                <p className="text-[11px] text-gray-500 text-center mt-1">Your plan will be active for {planDurationMonths(plan.price)} {planDurationMonths(plan.price) === 1 ? 'month' : 'months'}</p>
+              </div>
+            )}
             <div>
               <label className="block text-xs font-semibold mb-0.5 text-gray-700">Notes (optional)</label>
               <textarea
