@@ -1,8 +1,8 @@
-// src/lib/dbconfig.ts
+  // src/lib/dbconfig.ts
 // Centralized configuration for database and secrets (for non-production use)
 
 export const config = {
-  DB_HOST: 'auth-db789.hstgr.io', // Updated to Hostinger MySQL host
+  DB_HOST: 'localhost', // Updated to Hostinger MySQL host
   DB_PORT: '3306',
   DB_USER: 'u684770053_admin',
   DB_PASSWORD: 'Bestsports@12345',
