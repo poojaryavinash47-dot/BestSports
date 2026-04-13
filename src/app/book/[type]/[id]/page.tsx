@@ -2,6 +2,7 @@
 
 import { useState, use } from "react";
 import Image from "next/image";
+import Link from "next/link";
 import { Navbar } from "@/components/navbar";
 import { Footer } from "@/components/footer";
 import { Button } from "@/components/ui/button";
@@ -31,6 +32,8 @@ export default function BookingPage({ params }: { params: Promise<{ type: string
   const [selectedSlot, setSelectedSlot] = useState<string>("");
   const [duration, setDuration] = useState<string>("1");
   const [isProcessing, setIsProcessing] = useState(false);
+  const [showSuccessDialog, setShowSuccessDialog] = useState(false);
+  const [bookingId, setBookingId] = useState<string | null>(null);
 
   // Mock data based on type
   const isCricket = type === 'cricket';
@@ -68,7 +71,8 @@ export default function BookingPage({ params }: { params: Promise<{ type: string
         });
         if (res.ok) {
           const data = await res.json();
-          window.location.href = `/booking-success?id=${data.id}`;
+          setBookingId(data.id);
+          setShowSuccessDialog(true);
         } else {
           toast({ title: "Booking Failed", description: "Could not save booking.", variant: "destructive" });
         }
@@ -227,6 +231,28 @@ export default function BookingPage({ params }: { params: Promise<{ type: string
           </div>
         </div>
       </main>
+
+      {showSuccessDialog && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/70 p-4">
+          <div className="w-full max-w-lg rounded-[2rem] bg-white p-6 shadow-2xl ring-1 ring-black/10">
+            <div className="text-center">
+              <h2 className="text-2xl font-bold">Booking successful</h2>
+              <p className="mt-2 text-sm text-muted-foreground">Your payment was completed successfully. Please contact us for more information.</p>
+            </div>
+            <div className="mt-6 space-y-3 text-sm text-muted-foreground">
+              {bookingId && <p className="font-medium">Booking ID: {bookingId}</p>}
+            </div>
+            <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:justify-end">
+              <Button onClick={() => setShowSuccessDialog(false)} className="w-full sm:w-auto bg-primary text-white">
+                Close
+              </Button>
+              <Link href="/contact" className="inline-flex w-full items-center justify-center rounded-xl border border-secondary px-4 py-3 text-sm font-black uppercase tracking-[0.3em] text-secondary hover:bg-secondary/10 sm:w-auto">
+                Contact Us
+              </Link>
+            </div>
+          </div>
+        </div>
+      )}
 
       <Footer />
     </div>

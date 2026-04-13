@@ -63,7 +63,7 @@ export function Lightbox({ open, media, onClose }: LightboxProps) {
                   width={900}
                   height={500}
                   className="object-contain w-full h-full"
-                  priority
+                  loading="lazy"
                 />
               ) : (
                 <video

@@ -289,7 +289,7 @@ export default function SubscriptionPlans() {
       </section>
       {modalOpen && selectedPlan && (
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 backdrop-blur-sm">
-          <div className="relative w-full max-w-md mx-4 rounded-xl bg-white shadow-xl p-4 md:p-6 flex flex-col gap-3 min-h-[420px] max-h-[90vh] overflow-y-auto border border-gray-100">
+          <div className="relative w-full max-w-md mx-4 rounded-xl bg-white shadow-xl p-4 md:p-6 flex flex-col gap-3 min-h-[420px] max-h-[90vh] overflow-y-auto no-scrollbar border border-gray-100">
             <button
               className="absolute top-4 right-4 text-gray-400 hover:text-gray-700 focus:outline-none"
               onClick={() => setModalOpen(false)}
@@ -298,8 +298,8 @@ export default function SubscriptionPlans() {
             >
               <svg width="24" height="24" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" /></svg>
             </button>
-            <h2 className="text-lg md:text-xl font-bold text-gray-900 mb-0.5 tracking-tight text-center">Book Membership: {selectedPlan.name}</h2>
-            <div className="flex items-center gap-2 justify-center mb-2">
+            <h2 className="text-lg md:text-xl font-bold text-gray-900 mb-0 tracking-tight text-center">Book Membership: {selectedPlan.name}</h2>
+            <div className="flex items-center gap-1 justify-center mb-1">
               <span className="font-semibold text-blue-700 text-base md:text-lg">{selectedPlan.price}</span>
             </div>
             <MembershipBookingForm plan={selectedPlan} onSuccess={() => setModalOpen(false)} />

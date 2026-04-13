@@ -36,7 +36,6 @@ export default function MembershipBookingForm({ plan, onSuccess }: { plan: { nam
     const newErrors: { [key: string]: string } = {};
     if (!form.fullName) newErrors.fullName = "Full Name is required";
     if (!form.phone) newErrors.phone = "Phone Number is required";
-    if (!form.email) newErrors.email = "Email is required";
     if (!form.startDate) newErrors.startDate = "Select a start date";
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
@@ -83,7 +82,7 @@ export default function MembershipBookingForm({ plan, onSuccess }: { plan: { nam
           setTimeout(() => {
             setSuccess(false);
             onSuccess();
-          }, 2000);
+          }, 3000);
           setForm({
             fullName: "",
             phone: "",
@@ -110,10 +109,23 @@ export default function MembershipBookingForm({ plan, onSuccess }: { plan: { nam
   };
 
   return (
-    <motion.form layout className="flex flex-col gap-4 p-4" onSubmit={handleSubmit}>
+    <motion.form layout className="relative flex flex-col gap-4 p-4" onSubmit={handleSubmit}>
       {success && (
-        <div className="mb-4 p-3 rounded bg-green-100 text-green-800 text-center font-semibold border border-green-300">
-          Booking confirmed! Thank you.
+        <div className="absolute inset-0 z-30 flex items-center justify-center bg-black/30 p-4">
+          <div className="w-full max-w-sm rounded-3xl bg-white p-6 text-center shadow-2xl ring-1 ring-black/10">
+            <h3 className="text-xl font-bold text-gray-900">Booking confirmed!</h3>
+            <p className="mt-2 text-sm text-gray-600">Your membership booking was successful.</p>
+            <button
+              type="button"
+              onClick={() => {
+                setSuccess(false);
+                onSuccess();
+              }}
+              className="mt-6 inline-flex items-center justify-center rounded-full bg-primary px-5 py-2 text-sm font-semibold text-white hover:bg-primary/90"
+            >
+              Close
+            </button>
+          </div>
         </div>
       )}
       <div>
@@ -141,16 +153,15 @@ export default function MembershipBookingForm({ plan, onSuccess }: { plan: { nam
         {errors.phone && <p className="text-xs text-red-500 mt-0.5">{errors.phone}</p>}
       </div>
       <div>
-        <label className="block text-xs font-semibold mb-0.5 text-gray-700">Email<span className="text-red-500">*</span></label>
+        <label className="block text-xs font-semibold mb-0.5 text-gray-700">Email</label>
         <input
           type="email"
           name="email"
           value={form.email}
           onChange={handleChange}
           className="w-full rounded-md border border-gray-200 px-3 py-1.5 focus:outline-none focus:ring-2 focus:ring-blue-400 bg-gray-50 text-sm"
-          placeholder="Enter your email"
+          placeholder="Enter your email (optional)"
         />
-        {errors.email && <p className="text-xs text-red-500 mt-0.5">{errors.email}</p>}
       </div>
       <div>
         <label className="block text-xs font-semibold mb-0.5 text-gray-700">Select Start Date<span className="text-red-500">*</span></label>

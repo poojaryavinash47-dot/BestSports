@@ -44,6 +44,11 @@ function csvDate(d?: string): string {
   return '\t' + m[3] + ' ' + month + ' ' + m[1];
 }
 
+function formatRupee(price?: string) {
+  if (!price) return '-';
+  return `₹${price.replace(/₹\s*/g, '')}`;
+}
+
 function isExpiringSoon(endDate?: string) {
   if (!endDate) return false;
   const end = new Date(endDate);
@@ -407,7 +412,7 @@ export default function DashboardPage() {
                               <option value="cancelled">Cancelled</option>
                             </select>
                           ) : (
-                            <span className="px-2 py-1 rounded-full text-xs font-bold bg-blue-100 text-blue-700">₹{b.planPrice || '-'}</span>
+                            <span className="px-2 py-1 rounded-full text-xs font-bold bg-blue-100 text-blue-700">{formatRupee(b.planPrice)}</span>
                           )}
                         </td>
                         <td className="p-3" onClick={e => e.stopPropagation()}>
@@ -428,7 +433,7 @@ export default function DashboardPage() {
                               <div><span className="text-[10px] font-semibold text-gray-400 uppercase">Venue</span><p className="font-medium mt-0.5">{b.venue || '-'}</p></div>
                               <div><span className="text-[10px] font-semibold text-gray-400 uppercase">Batch / Time</span><p className="font-medium mt-0.5">{[b.time, b.batch].filter(Boolean).join(', ') || '-'}</p></div>
                               <div><span className="text-[10px] font-semibold text-gray-400 uppercase">Plan</span><p className="font-medium mt-0.5">{b.planName || b.sport || '-'}</p></div>
-                              <div><span className="text-[10px] font-semibold text-gray-400 uppercase">Price</span><p className="font-medium mt-0.5">{b.planPrice ? `₹${b.planPrice}` : '-'}</p></div>
+                              <div><span className="text-[10px] font-semibold text-gray-400 uppercase">Price</span><p className="font-medium mt-0.5">{formatRupee(b.planPrice)}</p></div>
                               <div><span className="text-[10px] font-semibold text-gray-400 uppercase">Start Date</span><p className="font-medium mt-0.5">{formatDate(b.startDate || b.date)}</p></div>
                               <div><span className="text-[10px] font-semibold text-gray-400 uppercase">End Date</span><p className="font-medium mt-0.5">{b.endDate ? formatDate(b.endDate) : '-'}</p></div>
                               {b.notes && (

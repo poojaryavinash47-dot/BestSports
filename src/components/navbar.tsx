@@ -9,11 +9,12 @@ import {
   Menu, 
   X, 
   User, 
-  LogIn, 
   Home, 
   Target, 
   Zap, 
-  Award
+  Award, 
+  Mail, 
+  MapPin
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 
@@ -26,6 +27,8 @@ export function Navbar() {
     { label: "Subscription", href: "/subscriptions", icon: Award },
     { label: "Membership", href: "/membership", icon: Award },
     { label: "Gallery", href: "/gallery", icon: Zap },
+    { label: "Contact", href: "/contact", icon: Mail },
+    { label: "Location", href: "/location", icon: MapPin },
   ];
 
   return (
@@ -68,15 +71,6 @@ export function Navbar() {
             })}
           </div>
 
-          <div className="hidden md:flex items-center gap-4">
-            <Link href="/auth">
-              <Button size="sm" className="btn-orange rounded-xl px-6 font-black h-11 italic tracking-tighter uppercase">
-                <LogIn className="h-4 w-4 mr-2" />
-                LOGIN
-              </Button>
-            </Link>
-          </div>
-
           <button className="lg:hidden p-2 text-foreground" onClick={() => setIsOpen(!isOpen)}>
             {isOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
           </button>
@@ -106,10 +100,7 @@ export function Navbar() {
               );
             })}
             <hr className="my-2 border-border" />
-            {/* dashboard link removed for admin-only flow */}
-            <Link href="/auth" onClick={() => setIsOpen(false)} className="flex items-center gap-3 px-4 py-4 text-lg font-black text-primary italic uppercase tracking-tighter">
-              <LogIn className="h-5 w-5" /> Login / Register
-            </Link>
+            {/* admin login moved to footer quick links */}
           </div>
         </div>
       )}

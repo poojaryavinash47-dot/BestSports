@@ -42,7 +42,9 @@ export function Footer() {
               <li><Link href="/subscriptions" className="text-blue-100/70 hover:text-primary transition-colors uppercase italic tracking-tighter">Subscriptions Plans</Link></li>
               <li><Link href="/membership" className="text-blue-100/70 hover:text-primary transition-colors uppercase italic tracking-tighter">Membership Plans</Link></li>
               <li><Link href="/gallery" className="text-blue-100/70 hover:text-primary transition-colors uppercase italic tracking-tighter">Gallery</Link></li>
-              <li><Link href="/auth" className="text-blue-100/70 hover:text-primary transition-colors uppercase italic tracking-tighter">Join the Club</Link></li>
+              <li><Link href="/contact" className="text-blue-100/70 hover:text-primary transition-colors uppercase italic tracking-tighter">Contact</Link></li>
+              <li><Link href="/location" className="text-blue-100/70 hover:text-primary transition-colors uppercase italic tracking-tighter">Location</Link></li>
+              <li><Link href="/auth" className="text-blue-100/70 hover:text-primary transition-colors uppercase italic tracking-tighter">Admin</Link></li>
             </ul>
           </div>
 
@@ -51,7 +53,7 @@ export function Footer() {
             <ul className="space-y-4 text-sm font-medium text-blue-100/70">
               <li className="flex items-center gap-3">
                 <MapPin className="h-5 w-5 text-primary shrink-0" />
-                <span>Sector 7, HSR Layout, Bangalore</span>
+                <span>686/42/3, 8th Cross Attur V, near CQAL Layout, 4th Phase, Attur Layout, Yelahanka New Town, Bengaluru, Karnataka 560064</span>
               </li>
               <li className="flex items-center gap-3">
                 <Phone className="h-5 w-5 text-primary shrink-0" />

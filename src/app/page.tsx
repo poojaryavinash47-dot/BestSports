@@ -261,10 +261,24 @@ export default function Home() {
       {/* Featured Sports */}
       <section className="py-24 bg-slate-50">
         <div className="container mx-auto px-4">
-          <div className="flex flex-col md:flex-row justify-between items-end mb-12 gap-4">
-            <div className="space-y-2">
-              <h2 className="font-headline text-4xl font-black tracking-tight text-secondary uppercase italic">Our Facilities</h2>
-              <p className="text-muted-foreground font-medium">Professional grade arenas for serious athletes.</p>
+          <div className="flex flex-col md:flex-row justify-between items-start mb-12 gap-4">
+            <div className="space-y-4">
+              <div className="space-y-2">
+                <h2 className="font-headline text-4xl font-black tracking-tight text-secondary uppercase italic">Our Facilities</h2>
+                <p className="text-muted-foreground font-medium">Professional grade arenas for serious athletes.</p>
+              </div>
+              <ul className="space-y-3 text-sm text-muted-foreground list-disc pl-5 mt-4">
+                <li className="leading-6">24/7 CCTV surveillance</li>
+                <li className="leading-6">Secure entry & exit monitoring</li>
+                <li className="leading-6">On-site staff supervision</li>
+                <li className="leading-6">Safe environment for players & visitors</li>
+                <li className="leading-6">Clean drinking water facility</li>
+                <li className="leading-6">Well-maintained rest & waiting areas</li>
+                <li className="leading-6">Changing rooms & washrooms</li>
+                <li className="leading-6">Ample parking space</li>
+                <li className="leading-6">Continuous power backup & lighting</li>
+                <li className="leading-6">Hygienic and well-maintained premises</li>
+              </ul>
             </div>
             <Link href="/membership">
               <Button variant="link" className="text-secondary font-bold group gap-2">
@@ -274,7 +288,7 @@ export default function Home() {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            <Link href="/cricket">
+            <Link href="/gallery">
               <Card className="group relative overflow-hidden border-none aspect-[16/9] cursor-pointer shadow-xl rounded-[2rem]">
                 <Image 
                   src={cricketHero?.imageUrl || "https://picsum.photos/seed/cricket/800/500"} 
@@ -290,7 +304,7 @@ export default function Home() {
               </Card>
             </Link>
 
-            <Link href="/badminton">
+            <Link href="/gallery">
               <Card className="group relative overflow-hidden border-none aspect-[16/9] cursor-pointer shadow-xl rounded-[2rem]">
                 <Image 
                   src={badmintonHero?.imageUrl || "https://picsum.photos/seed/badminton/800/500"} 
@@ -301,7 +315,7 @@ export default function Home() {
                 <div className="absolute inset-0 bg-gradient-to-t from-secondary/90 via-secondary/20 to-transparent"></div>
                 <div className="absolute bottom-0 left-0 p-8 w-full">
                   <span className="text-white bg-primary px-3 py-1 rounded-full text-[10px] font-black uppercase tracking-widest mb-3 inline-block">Olympic Standard</span>
-                  <h3 className="font-headline text-4xl font-black text-white uppercase italic tracking-tighter">Indoor Courts</h3>
+                  <h3 className="font-headline text-4xl font-black text-white uppercase italic tracking-tighter">Badminton Courts</h3>
                 </div>
               </Card>
             </Link>

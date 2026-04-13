@@ -73,7 +73,6 @@ const BookingModal: React.FC<BookingModalProps> = ({ isOpen, onClose, plan }) =>
     const newErrors: { [key: string]: string } = {};
     if (!form.fullName) newErrors.fullName = "Full Name is required";
     if (!form.phone) newErrors.phone = "Phone Number is required";
-    if (!form.email) newErrors.email = "Email is required";
     if (!form.batch) newErrors.batch = "Select a batch timing";
     if (!form.startDate) newErrors.startDate = "Select a start date";
     setErrors(newErrors);
@@ -124,7 +123,7 @@ const BookingModal: React.FC<BookingModalProps> = ({ isOpen, onClose, plan }) =>
           setTimeout(() => {
             setSuccess(false);
             onClose();
-          }, 2000);
+          }, 3000);
           setForm({
             fullName: "",
             phone: "",
@@ -170,15 +169,28 @@ const BookingModal: React.FC<BookingModalProps> = ({ isOpen, onClose, plan }) =>
         onMouseDown={handleOverlayClick}
       >
         <motion.div
-          className="relative w-full max-w-md mx-4 rounded-xl bg-white shadow-xl p-4 md:p-6 flex flex-col gap-3 min-h-[420px] max-h-[90vh] overflow-y-auto border border-gray-100"
+          className="relative w-full max-w-md mx-4 rounded-xl bg-white shadow-xl p-4 md:p-6 flex flex-col gap-3 min-h-[420px] max-h-[90vh] overflow-y-auto no-scrollbar border border-gray-100"
           initial={{ opacity: 0, scale: 0.9 }}
           animate={{ opacity: 1, scale: 1 }}
           exit={{ opacity: 0, scale: 0.9 }}
           transition={{ duration: 0.2 }}
         >
           {success && (
-            <div className="mb-4 p-3 rounded bg-green-100 text-green-800 text-center font-semibold border border-green-300">
-              Booking confirmed! Thank you.
+            <div className="absolute inset-0 z-20 flex items-center justify-center bg-black/30 p-4">
+              <div className="w-full max-w-sm rounded-3xl bg-white p-6 text-center shadow-2xl ring-1 ring-black/10">
+                <h3 className="text-xl font-bold text-gray-900">Booking confirmed!</h3>
+                <p className="mt-2 text-sm text-gray-600">Thank you. Your booking has been successfully received.</p>
+                <button
+                  type="button"
+                  onClick={() => {
+                    setSuccess(false);
+                    onClose();
+                  }}
+                  className="mt-6 inline-flex items-center justify-center rounded-full bg-primary px-5 py-2 text-sm font-semibold text-white hover:bg-primary/90"
+                >
+                  Close
+                </button>
+              </div>
             </div>
           )}
           <button
@@ -189,9 +201,9 @@ const BookingModal: React.FC<BookingModalProps> = ({ isOpen, onClose, plan }) =>
           >
             <IoClose size={24} />
           </button>
-          <div className="mb-1">
-            <h2 className="text-lg md:text-xl font-bold text-gray-900 mb-0.5 tracking-tight">Book: {plan.name}</h2>
-            <div className="flex items-center gap-2">
+          <div className="mb-1 text-center">
+            <h2 className="text-lg md:text-xl font-bold text-gray-900 mb-0 tracking-tight">Book: {plan.name}</h2>
+            <div className="flex items-center justify-center gap-1">
               <span className="font-semibold text-blue-700 text-base md:text-lg">{plan.price}</span>
             </div>
           </div>
@@ -208,29 +220,30 @@ const BookingModal: React.FC<BookingModalProps> = ({ isOpen, onClose, plan }) =>
               />
               {errors.fullName && <p className="text-xs text-red-500 mt-0.5">{errors.fullName}</p>}
             </div>
-            <div>
-              <label className="block text-xs font-semibold mb-0.5 text-gray-700">Phone Number<span className="text-red-500">*</span></label>
-              <input
-                type="tel"
-                name="phone"
-                value={form.phone}
-                onChange={handleChange}
-                className="w-full rounded-md border border-gray-200 px-3 py-1.5 focus:outline-none focus:ring-2 focus:ring-blue-400 bg-gray-50 text-sm"
-                placeholder="Enter your phone number"
-              />
-              {errors.phone && <p className="text-xs text-red-500 mt-0.5">{errors.phone}</p>}
-            </div>
-            <div>
-              <label className="block text-xs font-semibold mb-0.5 text-gray-700">Email<span className="text-red-500">*</span></label>
-              <input
-                type="email"
-                name="email"
-                value={form.email}
-                onChange={handleChange}
-                className="w-full rounded-md border border-gray-200 px-3 py-1.5 focus:outline-none focus:ring-2 focus:ring-blue-400 bg-gray-50 text-sm"
-                placeholder="Enter your email"
-              />
-              {errors.email && <p className="text-xs text-red-500 mt-0.5">{errors.email}</p>}
+            <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
+              <div>
+                <label className="block text-xs font-semibold mb-0.5 text-gray-700">Phone Number<span className="text-red-500">*</span></label>
+                <input
+                  type="tel"
+                  name="phone"
+                  value={form.phone}
+                  onChange={handleChange}
+                  className="w-full rounded-md border border-gray-200 px-3 py-1.5 focus:outline-none focus:ring-2 focus:ring-blue-400 bg-gray-50 text-sm"
+                  placeholder="Enter your phone number"
+                />
+                {errors.phone && <p className="text-xs text-red-500 mt-0.5">{errors.phone}</p>}
+              </div>
+              <div>
+                <label className="block text-xs font-semibold mb-0.5 text-gray-700">Email</label>
+                <input
+                  type="email"
+                  name="email"
+                  value={form.email}
+                  onChange={handleChange}
+                  className="w-full rounded-md border border-gray-200 px-3 py-1.5 focus:outline-none focus:ring-2 focus:ring-blue-400 bg-gray-50 text-sm"
+                  placeholder="Enter your email(optional)"
+                />
+              </div>
             </div>
             <div>
               <label className="block text-xs font-semibold mb-0.5 text-gray-700">Select Batch Timing<span className="text-red-500">*</span></label>
@@ -290,13 +303,6 @@ const BookingModal: React.FC<BookingModalProps> = ({ isOpen, onClose, plan }) =>
               className={`mt-2 w-full py-2 rounded-md text-white font-semibold shadow bg-gradient-to-r ${plan.theme.button} hover:opacity-90 transition text-base`}
             >
               Confirm Booking
-            </button>
-            <button
-              type="button"
-              className="w-full py-2 rounded-md text-gray-700 font-semibold border border-gray-200 mt-1 hover:bg-gray-50 transition text-base"
-              onClick={onClose}
-            >
-              Cancel
             </button>
           </form>
         </motion.div>
