@@ -7,7 +7,7 @@ export default function LocationPage() {
   return (
     <>
       <Navbar />
-      <main className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-white py-16">
+      <main className="min-h-screen bg-white py-16">
         <div className="container mx-auto px-4">
           <div className="max-w-6xl mx-auto space-y-12">
             <section className="rounded-[2rem] border border-slate-200 bg-white p-10 shadow-xl">

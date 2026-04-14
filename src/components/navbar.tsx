@@ -32,22 +32,32 @@ export function Navbar() {
   ];
 
   return (
-    <nav className="sticky top-0 z-50 w-full h-16 border-b bg-background/95 backdrop-blur-lg shadow">
+    <nav className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur-lg">
       <div className="container mx-auto px-4">
-        <div className="flex h-16 items-center justify-between">
-          {/* Logo Section */}
-          <Link href="/" className="flex items-center gap-4 group">
-            <div className="flex h-12 sm:h-14 md:h-16">
-              <Image
-                src="/logo.png"
-                alt="Best Shot BSBA Sports Arena Logo"
-                height={64}
-                width={160}
-                className="h-full w-auto object-contain"
-                priority
-              />
-            </div>
-          </Link>
+        <div className="flex h-20 items-center justify-between">
+          <div className="flex items-center gap-3">
+            <Link href="/" className="flex items-center gap-3 group">
+              <div className="relative w-18 h-16 flex items-center justify-center">
+                {/* Stylized Logo Shield */}
+                <svg viewBox="0 0 100 100" className="w-full h-full fill-secondary group-hover:scale-105 transition-transform duration-300">
+                  <path d="M50 5 L10 25 L10 50 C10 75 50 95 50 95 C50 95 90 75 90 50 L90 25 L50 5 Z" />
+                </svg>
+                <div className="absolute inset-0 flex flex-col items-center justify-center text-white pb-1">
+                  <span className="text-[14px] font-black leading-none">B</span>
+                  <div className="w-6 h-[1px] bg-primary my-0.5"></div>
+                  <span className="text-[6px] font-bold tracking-tighter">EST 2025</span>
+                </div>
+              </div>
+              <div className="flex flex-col">
+                <span className="font-headline text-xl font-black leading-none tracking-tighter text-foreground uppercase italic">
+                  BEST SHOT
+                </span>
+                <span className="font-headline text-xs font-bold leading-none tracking-[0.2em] text-primary uppercase">
+                  CRICKET
+                </span>
+              </div>
+            </Link>
+          </div>
 
           <div className="hidden lg:flex items-center gap-2 ml-8">
             {menuItems.map((item) => {

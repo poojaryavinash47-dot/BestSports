@@ -9,82 +9,12 @@ import { motion, AnimatePresence } from "framer-motion";
 import type { Variants } from "framer-motion";
 import Image from "next/image";
 
-const cricketPlans = [
-  {
-    name: "Basic",
-    price: "₹4000/month",
-    image: "/c1.png",
-    features: [
-      "Mon–Fri coaching",
-      "1 hour session",
-      "Batch timings included",
-      "No benefits",
-      "No discounts on bookings",
-    ],
-    batchTimings: [
-      "5:30 AM – 7:30 AM",
-      "4:30 PM – 6:30 PM",
-      "6:30 PM – 8:30 PM",
-    ],
-    theme: {
-      bar: "bg-blue-500",
-      price: "text-blue-700",
-      button: "from-blue-500 to-green-500",
-    },
-    highlight: false,
-  },
-  {
-    name: "Pro",
-    price: "₹20000/6 months",
-    image: "/c2.png",
-    features: [
-      "2 hour sessions",
-      "Skill development focus",
-      "No benefits",
-      "No discounts on bookings",
-    ],
-    batchTimings: [
-      "5:30 AM – 7:30 AM",
-      "4:30 PM – 6:30 PM",
-      "6:30 PM – 8:30 PM",
-    ],
-    theme: {
-      bar: "bg-green-600",
-      price: "text-green-700",
-      button: "from-green-600 to-blue-500",
-    },
-    highlight: false,
-  },
-  {
-    name: "Elite",
-    price: "₹30000/year",
-    image: "/c3.png",
-    features: [
-      "Full access anytime",
-      "Premium access",
-      "No benefits",
-      "No discounts on bookings",
-    ],
-    batchTimings: [
-      "5:30 AM – 7:30 AM",
-      "4:30 PM – 6:30 PM",
-      "6:30 PM – 8:30 PM",
-    ],
-    theme: {
-      bar: "bg-blue-900",
-      price: "text-blue-900",
-      button: "from-blue-900 to-green-700",
-    },
-    highlight: true,
-  },
-];
-
-const badmintonPlans = [
+const badmintonPlans = [ 
   {
     name: "Monthly Plan",
     price: "₹6,600",
     duration: "1 Month",
-    image: "/b2.png",
+    image: "/b4.png",
     features: [
       "Court access",
       "Flexible timings",
@@ -104,7 +34,7 @@ const badmintonPlans = [
     name: "3 Months Plan",
     price: "₹18,150",
     duration: "3 Months",
-    image: "/b2.png",
+    image: "/b1.png",
     features: [
       "Court access",
       "Flexible timings",
@@ -188,9 +118,7 @@ function ImageCarousel({ images, alt }: { images: string[]; alt: string }) {
   );
 }
 
-export default function SubscriptionPlans() {
-  const [tab, setTab] = useState<'cricket' | 'badminton'>("cricket");
-
+export default function MembershipPlans() {
   type Plan = {
     name: string;
     price: string;
@@ -261,30 +189,32 @@ export default function SubscriptionPlans() {
 
   return (
     <>
-      <section className="min-h-screen py-12 px-4 bg-blue-600 font-sans">
-        <div className="max-w-4xl mx-auto text-center mb-10">
-          <div className="flex justify-center items-center gap-4 mt-6">
-            <button
-              className={`px-5 py-2 rounded-full font-semibold transition-colors duration-200 border-2 ${tab === 'cricket' ? 'bg-blue-600 text-white border-blue-700 shadow' : 'bg-white text-blue-700 border-blue-200'}`}
-              onClick={() => setTab('cricket')}
-            >
-              Cricket Membership Plans
-            </button>
-            <button
-              className={`px-5 py-2 rounded-full font-semibold transition-colors duration-200 border-2 ${tab === 'badminton' ? 'bg-orange-500 text-white border-orange-600 shadow' : 'bg-white text-orange-600 border-orange-200'}`}
-              onClick={() => setTab('badminton')}
-            >
-              Badminton Membership Plans
-            </button>
-          </div>
+      <section className="relative min-h-screen py-12 px-4 font-sans overflow-hidden">
+        {/* Blurred background image */}
+        <div
+          className="pointer-events-none absolute inset-0 z-0 opacity-90"
+          style={{
+            backgroundImage: "url('/b3.png')",
+            backgroundSize: 'cover',
+            backgroundPosition: 'center',
+            backgroundRepeat: 'no-repeat',
+            filter: 'blur(6px)', // Less blur for clarity
+            transform: 'scale(1.05)',
+          }}
+          aria-hidden="true"
+        />
+        <div className="relative max-w-4xl mx-auto text-center mb-10 z-10">
+          <h2 className="text-3xl font-black text-white uppercase italic tracking-tighter">
+            Badminton Membership Plans
+          </h2>
         </div>
         <motion.div
-          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl gap-6 max-w-7xl mx-auto"
+          className="relative grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl gap-6 max-w-7xl mx-auto z-10"
           initial="hidden"
           animate="visible"
           variants={{}}
         >
-          {(tab === 'cricket' ? cricketPlans : badmintonPlans).map((plan, idx) => renderPlanCard(plan, idx))}
+          {badmintonPlans.map((plan, idx) => renderPlanCard(plan, idx))}
         </motion.div>
       </section>
       {modalOpen && selectedPlan && (

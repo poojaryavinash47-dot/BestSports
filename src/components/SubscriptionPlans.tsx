@@ -11,9 +11,76 @@ import BookingModal from "./BookingModal.client";
 
 const cricketPlans = [
   {
+    name: "Basic",
+    price: "₹4000/month",
+    image: "/c1.png",
+    features: [
+      "Mon–Fri coaching",
+      "1 hour session",
+      "Batch timings included",
+      "No benefits",
+      "No discounts on bookings",
+    ],
+    batchTimings: [
+      "5:30 AM – 7:30 AM",
+      "4:30 PM – 6:30 PM",
+      "6:30 PM – 8:30 PM",
+    ],
+    theme: {
+      bar: "bg-blue-500",
+      price: "text-blue-700",
+      button: "from-blue-500 to-green-500",
+    },
+    highlight: false,
+  },
+  {
+    name: "Pro",
+    price: "₹20000/6 months",
+    image: "/c2.png",
+    features: [
+      "2 hour sessions",
+      "Skill development focus",
+      "No benefits",
+      "No discounts on bookings",
+    ],
+    batchTimings: [
+      "5:30 AM – 7:30 AM",
+      "4:30 PM – 6:30 PM",
+      "6:30 PM – 8:30 PM",
+    ],
+    theme: {
+      bar: "bg-green-600",
+      price: "text-green-700",
+      button: "from-green-600 to-blue-500",
+    },
+    highlight: false,
+  },
+  {
+    name: "Elite",
+    price: "₹30000/year",
+    image: "/c3.png",
+    features: [
+      "Full access anytime",
+      "Premium access",
+      "No benefits",
+      "No discounts on bookings",
+    ],
+    batchTimings: [
+      "5:30 AM – 7:30 AM",
+      "4:30 PM – 6:30 PM",
+      "6:30 PM – 8:30 PM",
+    ],
+    theme: {
+      bar: "bg-blue-900",
+      price: "text-blue-900",
+      button: "from-blue-900 to-green-700",
+    },
+    highlight: true,
+  },
+  {
     name: "Weekend",
     price: "₹2500/month",
-    image: "/c1.png",
+    image: "/c11.png",
     features: [
       "Sat & Sun coaching",
       "No benefits",
@@ -76,15 +143,14 @@ const cricketPlans = [
   {
     name: "Full",
     price: "₹35000/year",
-    image: "/c3.png",
+    image: "/c11.png",
     features: [
       "Full week premium access",
       "No benefits",
       "No discounts on bookings",
     ],
     batchTimings: [
-      "5:30 AM – 7:30 AM",
-      "4:30 PM – 6:30 PM",
+      "5:30 AM – 7:30 PM",
       "6:30 PM – 8:30 PM",
     ],
     theme: {
@@ -94,9 +160,10 @@ const cricketPlans = [
     },
     highlight: false,
   },
+  
 ];
 
-const badmintonPlans = [
+const badmintonPlans = [ 
   {
     name: "Badminton Coaching",
     price: "₹4000/month",
@@ -172,6 +239,25 @@ function ImageCarousel({ images, alt }: { images: string[]; alt: string }) {
 
 export default function SubscriptionPlans() {
   const [tab, setTab] = useState<'cricket' | 'badminton'>("cricket");
+
+  // Dynamic background style for each tab
+  const sectionBgStyle: React.CSSProperties = tab === 'badminton'
+    ? {
+        backgroundImage: "url('/b3.png')",
+        backgroundSize: 'cover',
+        backgroundPosition: 'center',
+        backgroundRepeat: 'no-repeat',
+        filter: 'blur(6px)', // Less blur for clarity
+        transform: 'scale(1.05)',
+      }
+    : {
+        backgroundImage: "url('/c1.png')",
+        backgroundSize: 'cover',
+        backgroundPosition: 'center',
+        backgroundRepeat: 'no-repeat',
+        filter: 'blur(4px)', // Less blur for clarity
+        transform: 'scale(1.05)',
+      };
 
   type Plan = {
     name: string;
@@ -249,8 +335,24 @@ export default function SubscriptionPlans() {
 
   return (
     <>
-      <section className="min-h-screen py-12 px-4 bg-blue-600 font-sans">
-        <div className="max-w-4xl mx-auto text-center mb-10">
+      <section className="relative min-h-screen py-12 px-4 font-sans overflow-hidden">
+        {/* Blurred background only for badminton tab */}
+        {tab === 'badminton' && (
+          <div
+            className="pointer-events-none absolute inset-0 z-0 opacity-90"
+            style={sectionBgStyle}
+            aria-hidden="true"
+          />
+        )}
+        {/* Default background for cricket tab */}
+        {tab === 'cricket' && (
+          <div
+            className="pointer-events-none absolute inset-0 z-0 opacity-90"
+            style={sectionBgStyle}
+            aria-hidden="true"
+          />
+        )}
+        <div className="relative max-w-4xl mx-auto text-center mb-10 z-10">
           <div className="flex justify-center items-center gap-4 mt-6">
             <button
               className={`px-5 py-2 rounded-full font-semibold transition-colors duration-200 border-2 ${tab === 'cricket' ? 'bg-blue-600 text-white border-blue-700 shadow' : 'bg-white text-blue-700 border-blue-200'}`}

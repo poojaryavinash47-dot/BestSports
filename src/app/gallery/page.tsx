@@ -86,7 +86,7 @@ const galleryData: MediaType[] = [
   {
     id: "12",
     type: "image" as const,
-    src: "/c4.png",
+    src: "/c11.png",
     category: "Cricket",
   },
 ];

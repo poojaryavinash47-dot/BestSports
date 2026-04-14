@@ -9,15 +9,25 @@ export function Footer() {
       <div className="container mx-auto px-4">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-12">
           <div className="space-y-6">
-            <div className="flex flex-col items-start">
-              <Image
-                src="/logo.png"
-                alt="Best Shot BSBA Sports Arena Logo"
-                width={120}
-                height={48}
-                className="h-14 w-auto object-contain"
-                priority
-              />
+            <div className="flex items-center gap-4">
+              <div className="relative w-16 h-14 flex items-center justify-center">
+                <svg viewBox="0 0 100 100" className="w-full h-full fill-secondary">
+                  <path d="M50 5 L10 25 L10 50 C10 75 50 95 50 95 C50 95 90 75 90 50 L90 25 L50 5 Z" />
+                </svg>
+                <div className="absolute inset-0 flex flex-col items-center justify-center text-white pb-1">
+                  <span className="text-[14px] font-black leading-none">B</span>
+                  <div className="w-6 h-[1px] bg-primary my-0.5"></div>
+                  <span className="text-[6px] font-bold tracking-tighter">EST 2025</span>
+                </div>
+              </div>
+              <div className="flex flex-col">
+                <span className="font-headline text-3xl font-black leading-none tracking-tighter uppercase italic">
+                  BEST SHOT
+                </span>
+                <span className="font-headline text-sm font-bold leading-none tracking-[0.2em] text-primary uppercase">
+                  CRICKET
+                </span>
+              </div>
             </div>
             <p className="text-sm text-blue-100/70 font-medium leading-relaxed">
               Professional cricket arenas and badminton courts for the serious athlete. Excellence in maintenance and community since 2025.
