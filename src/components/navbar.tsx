@@ -27,8 +27,7 @@ export function Navbar() {
     { label: "Subscription", href: "/subscriptions", icon: Award },
     { label: "Membership", href: "/membership", icon: Award },
     { label: "Gallery", href: "/gallery", icon: Zap },
-    { label: "Contact", href: "/contact", icon: Mail },
-    { label: "Location", href: "/location", icon: MapPin },
+    { label: "Contact Us", href: "/contact-us", icon: Mail },
   ];
 
   return (

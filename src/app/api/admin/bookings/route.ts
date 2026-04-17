@@ -41,6 +41,7 @@ export async function GET(req: Request) {
       const d = new Date(dateStr);
       if (isNaN(d.getTime())) return '';
       d.setMonth(d.getMonth() + months);
+      d.setDate(d.getDate() - 1); // Exclude the last date, match frontend
       return d.toISOString().slice(0, 10);
     }
 

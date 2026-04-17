@@ -246,7 +246,7 @@ export default function BookingPage({ params }: { params: Promise<{ type: string
               <Button onClick={() => setShowSuccessDialog(false)} className="w-full sm:w-auto bg-primary text-white">
                 Close
               </Button>
-              <Link href="/contact" className="inline-flex w-full items-center justify-center rounded-xl border border-secondary px-4 py-3 text-sm font-black uppercase tracking-[0.3em] text-secondary hover:bg-secondary/10 sm:w-auto">
+              <Link href="/contact-us" className="inline-flex w-full items-center justify-center rounded-xl border border-secondary px-4 py-3 text-sm font-black uppercase tracking-[0.3em] text-secondary hover:bg-secondary/10 sm:w-auto">
                 Contact Us
               </Link>
             </div>

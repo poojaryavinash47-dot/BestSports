@@ -3,7 +3,7 @@ import { Navbar } from "@/components/navbar";
 import { Footer } from "@/components/footer";
 import { MapPin, Clock, Phone, Mail } from "lucide-react";
 
-export default function LocationPage() {
+export default function ContactUsPage() {
   return (
     <>
       <Navbar />
@@ -12,7 +12,7 @@ export default function LocationPage() {
           <div className="max-w-6xl mx-auto space-y-12">
             <section className="rounded-[2rem] border border-slate-200 bg-white p-10 shadow-xl">
               <span className="inline-flex items-center gap-2 text-xs font-black uppercase tracking-[0.35em] text-primary">
-                Location
+                Contact Us
               </span>
               <h1 className="mt-4 text-4xl md:text-5xl font-black uppercase tracking-tight text-secondary">
                 Find us in Yelahanka New Town
@@ -87,7 +87,7 @@ export default function LocationPage() {
 
               <div className="mt-10 text-sm text-muted-foreground">
                 <p>
-                  Need help with bookings or membership questions? <Link href="/contact" className="font-bold text-primary hover:underline">Visit our contact page</Link> for faster support.
+                  Need help with bookings or membership questions? <span className="font-bold text-primary">Contact us for faster support.</span>
                 </p>
               </div>
             </section>

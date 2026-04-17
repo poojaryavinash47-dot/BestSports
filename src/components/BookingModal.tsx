@@ -92,8 +92,9 @@ const BookingModal: React.FC<BookingModalProps> = ({ isOpen, onClose, plan }) =>
     script.src = 'https://checkout.razorpay.com/v1/checkout.js';
     script.async = true;
     script.onload = () => {
-      // Parse price (remove currency symbol and non-digits)
-      const amountMatch = plan.price.replace(/[^\d]/g, "");
+          // Parse price before slash (e.g., "₹20000/6 months" -> "20000")
+          const pricePart = plan.price.split("/")[0];
+          const amountMatch = pricePart.replace(/[^\d]/g, "");
       const amount = parseInt(amountMatch || "1000", 10) * 100; // in paise
       const options = {
         key: 'rzp_test_SFWS45gPercdHp', // Provided test key
