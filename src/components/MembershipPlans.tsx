@@ -19,8 +19,7 @@ const badmintonPlans = [
       "Court access",
       "Flexible timings",
       "Coaching support",
-      "No benefits",
-      "No discounts on bookings",
+        "Items are for sale in the venue itself",
     ],
     theme: {
       bar: "bg-orange-500",
@@ -39,8 +38,7 @@ const badmintonPlans = [
       "Court access",
       "Flexible timings",
       "Coaching support",
-      "No benefits",
-      "No discounts on bookings",
+        "Items are for sale in the venue itself",
     ],
     theme: {
       bar: "bg-orange-500",
@@ -59,8 +57,7 @@ const badmintonPlans = [
       "Court access",
       "Flexible timings",
       "Coaching support",
-      "No benefits",
-      "No discounts on bookings",
+        "Items are for sale in the venue itself",
     ],
     theme: {
       bar: "bg-orange-500",

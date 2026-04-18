@@ -51,9 +51,6 @@ export function Navbar() {
                 <span className="font-headline text-xl font-black leading-none tracking-tighter text-foreground uppercase italic">
                   BEST SHOT
                 </span>
-                <span className="font-headline text-xs font-bold leading-none tracking-[0.2em] text-primary uppercase">
-                  CRICKET
-                </span>
               </div>
             </Link>
           </div>

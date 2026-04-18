@@ -179,8 +179,8 @@ const BookingModal: React.FC<BookingModalProps> = ({ isOpen, onClose, plan }) =>
           {success && (
             <div className="absolute inset-0 z-20 flex items-center justify-center bg-black/30 p-4">
               <div className="w-full max-w-sm rounded-3xl bg-white p-6 text-center shadow-2xl ring-1 ring-black/10">
-                <h3 className="text-xl font-bold text-gray-900">Booking confirmed!</h3>
-                <p className="mt-2 text-sm text-gray-600">Thank you. Your booking has been successfully received.</p>
+                <h3 className="text-xl font-bold text-gray-900">Booking successful</h3>
+                <p className="mt-2 text-sm text-gray-600">Please contact us for more information.</p>
                 <button
                   type="button"
                   onClick={() => {

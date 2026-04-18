@@ -24,9 +24,6 @@ export function Footer() {
                 <span className="font-headline text-3xl font-black leading-none tracking-tighter uppercase italic">
                   BEST SHOT
                 </span>
-                <span className="font-headline text-sm font-bold leading-none tracking-[0.2em] text-primary uppercase">
-                  CRICKET
-                </span>
               </div>
             </div>
             <p className="text-sm text-blue-100/70 font-medium leading-relaxed">
@@ -83,7 +80,7 @@ export function Footer() {
           {/* Newsletter section removed */}
         </div>
         <div className="mt-20 pt-8 border-t border-white/10 text-center text-xs text-blue-100/40 font-bold uppercase tracking-widest">
-          © {new Date().getFullYear()} BEST SHOT CRICKET. ALL RIGHTS RESERVED.
+          © {new Date().getFullYear()} BEST SHOT. ALL RIGHTS RESERVED.
         </div>
       </div>
     </footer>

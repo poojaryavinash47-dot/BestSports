@@ -10,7 +10,7 @@ export function FloatingWhatsApp() {
 
   return (
     <a
-      href="https://wa.me/1234567890" // Replace with your WhatsApp number
+      href="https://wa.me/919632075709" // Updated WhatsApp number
       target="_blank"
       rel="noopener noreferrer"
       className="fixed bottom-6 right-6 z-50 bg-green-500 hover:bg-green-600 rounded-full p-3 shadow-lg flex items-center justify-center"

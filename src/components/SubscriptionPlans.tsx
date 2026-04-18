@@ -18,8 +18,7 @@ const cricketPlans = [
       "Mon–Fri coaching",
       "1 hour session",
       "Batch timings included",
-      "No benefits",
-      "No discounts on bookings",
+        "Items are for sale in the venue itself",
     ],
     batchTimings: [
       "5:30 AM – 7:30 AM",
@@ -40,8 +39,7 @@ const cricketPlans = [
     features: [
       "2 hour sessions",
       "Skill development focus",
-      "No benefits",
-      "No discounts on bookings",
+        "Items are for sale in the venue itself",
     ],
     batchTimings: [
       "5:30 AM – 7:30 AM",
@@ -62,8 +60,7 @@ const cricketPlans = [
     features: [
       "Full access anytime",
       "Premium access",
-      "No benefits",
-      "No discounts on bookings",
+        "Items are for sale in the venue itself",
     ],
     batchTimings: [
       "5:30 AM – 7:30 AM",
@@ -83,8 +80,7 @@ const cricketPlans = [
     image: "/c11.png",
     features: [
       "Sat & Sun coaching",
-      "No benefits",
-      "No discounts on bookings",
+        "Items are for sale in the venue itself",
     ],
     batchTimings: [
       "5:30 AM – 7:30 AM",
@@ -104,8 +100,7 @@ const cricketPlans = [
     image: "/c2.png",
     features: [
       "Flexible Sat & Sun",
-      "No benefits",
-      "No discounts on bookings",
+        "Items are for sale in the venue itself",
     ],
     batchTimings: [
       "5:30 AM – 7:30 AM",
@@ -125,8 +120,7 @@ const cricketPlans = [
     image: "/c3.png",
     features: [
       "Fri–Sun coaching",
-      "No benefits",
-      "No discounts on bookings",
+        "Items are for sale in the venue itself",
     ],
     batchTimings: [
       "5:30 AM – 7:30 AM",
@@ -146,8 +140,7 @@ const cricketPlans = [
     image: "/c11.png",
     features: [
       "Full week premium access",
-      "No benefits",
-      "No discounts on bookings",
+        "Items are for sale in the venue itself",
     ],
     batchTimings: [
       "5:30 AM – 7:30 PM",
@@ -171,8 +164,7 @@ const badmintonPlans = [
     features: [
       "Mon–Fri",
       "Multiple batch timings",
-      "No benefits",
-      "No discounts on bookings",
+        "Items are for sale in the venue itself",
     ],
     batchTimings: [
       "5–6 AM",
