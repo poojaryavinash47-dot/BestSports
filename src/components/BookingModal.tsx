@@ -97,7 +97,7 @@ const BookingModal: React.FC<BookingModalProps> = ({ isOpen, onClose, plan }) =>
           const amountMatch = pricePart.replace(/[^\d]/g, "");
       const amount = parseInt(amountMatch || "1000", 10) * 100; // in paise
       const options = {
-        key: 'rzp_test_SFWS45gPercdHp', // Provided test key
+        key: process.env.NEXT_PUBLIC_RAZORPAY_KEY || 'rzp_live_SevED3CcEouKuh',
         amount,
         currency: 'INR',
         name: plan.name,
